@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Ninjas Clone | Created by Amit Chaudhari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        :root {
+            --primary: #f26422;
+            --primary-dark: #e05a1c;
+            --secondary: #2d3748;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(90deg, #f26422, #fa7e32);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #f26422, #fa7e32);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-card {
+            transition: all 0.4s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .course-card {
+            transition: all 0.4s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover .feature-icon {
+            transform: scale(1.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #f26422, #fa7e32);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(242, 100, 34, 0.4);
+        }
+        
+        .btn-outline {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(242, 100, 34, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .badge-bounce {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .creator-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #f26422, #fa7e32);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(242, 100, 34, 0.3);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .creator-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(242, 100, 34, 0.4);
+        }
+        
+        .stats-counter {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+        
+        .course-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        .custom-shape-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .custom-shape-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 70px;
+        }
+        
+        .custom-shape-divider .shape-fill {
+            fill: #F3F4F6;
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 15px rgba(242, 100, 34, 0.5);
+        }
+        
+        .shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .rotate-slow {
+            animation: rotate 15s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .typing-animation::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .mega-menu {
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .mega-menu-trigger:hover .mega-menu {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .notification-dot {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 8px;
+            height: 8px;
+            background-color: #EF4444;
+            border-radius: 50%;
+        }
+        
+        .live-indicator {
+            position: relative;
+            padding-left: 16px;
+        }
+        
+        .live-indicator::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: #EF4444;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            height: 40px;
+            background: rgba(242, 100, 34, 0.1);
+            padding-left: 100%;
+            box-sizing: content-box;
+        }
+        
+        .ticker {
+            display: inline-block;
+            white-space: nowrap;
+            padding-right: 100%;
+            box-sizing: content-box;
+            animation: ticker 30s linear infinite;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+        
+        .ticker-item {
+            display: inline-block;
+            padding: 0 2rem;
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #f26422, #fa7e32);
+            width: 0%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: width 0.2s ease;
+        }
+        
+        .tooltip {
+            position: relative;
+        }
+        
+        .tooltip-text {
+            visibility: hidden;
+            width: 120px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f26422;
+            opacity: 0.8;
+        }
+        
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 30px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #f26422;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+        
+        .dark-mode {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+        
+        .dark-mode .bg-white {
+            background-color: #2a2a2a;
+        }
+        
+        .dark-mode .text-gray-800 {
+            color: #f5f5f5;
+        }
+        
+        .dark-mode .text-gray-600 {
+            color: #d1d1d1;
+        }
+        
+        .dark-mode .border-gray-300 {
+            border-color: #444;
+        }
+        
+        .dark-mode .bg-gray-50 {
+            background-color: #1a1a1a;
+        }
+        
+        .dark-mode .bg-gray-100 {
+            background-color: #2a2a2a;
+        }
+        
+        .dark-mode .shadow-md {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dark-mode .shadow-lg {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dark-mode .border-gray-100 {
+            border-color: #444;
+        }
+        
+        .code-editor {
+            font-family: 'Courier New', monospace;
+            background-color: #282c34;
+            color: #abb2bf;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .code-editor-header {
+            background-color: #21252b;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .code-editor-body {
+            padding: 15px;
+            position: relative;
+        }
+        
+        .code-line {
+            display: flex;
+        }
+        
+        .line-number {
+            color: #636d83;
+            min-width: 30px;
+            text-align: right;
+            padding-right: 10px;
+            user-select: none;
+        }
+        
+        .keyword {
+            color: #c678dd;
+        }
+        
+        .string {
+            color: #98c379;
+        }
+        
+        .comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+        
+        .function {
+            color: #61afef;
+        }
+        
+        .variable {
+            color: #e06c75;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 18px;
+            background-color: #fff;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+        
+        .chat-bubble {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f26422, #fa7e32);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(242, 100, 34, 0.3);
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-bubble:hover {
+            transform: scale(1.1);
+        }
+        
+        .chat-panel {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 350px;
+            height: 450px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            z-index: 101;
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+        }
+        
+        .chat-header {
+            background: linear-gradient(90deg, #f26422, #fa7e32);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        
+        .chat-footer {
+            padding: 10px;
+            border-top: 1px solid #eee;
+            display: flex;
+        }
+        
+        .chat-input {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 8px 15px;
+            outline: none;
+        }
+        
+        .chat-send {
+            background: linear-gradient(90deg, #f26422, #fa7e32);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .message {
+            margin-bottom: 10px;
+            max-width: 80%;
+        }
+        
+        .message-content {
+            padding: 10px 15px;
+            border-radius: 18px;
+        }
+        
+        .user-message {
+            margin-left: auto;
+        }
+        
+        .user-message .message-content {
+            background: #f0f0f0;
+        }
+        
+        .bot-message .message-content {
+            background: #f26422;
+            color: white;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #f26422;
+            border-radius: 50%;
+            margin-right: 4px;
+            animation: typingAnimation 1.5s infinite ease-in-out;
+        }
+        
+        .typing-dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+        
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.6s;
+            margin-right: 0;
+        }
+        
+        @keyframes typingAnimation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .countdown-box {
+            background: linear-gradient(135deg, #f26422, #fa7e32);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            min-width: 60px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(242, 100, 34, 0.3);
+        }
+        
+        .countdown-value {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .event-card {
+            border-left: 4px solid #f26422;
+            transition: all 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateX(5px);
+        }
+        
+        .accordion-header {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+        
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .tab-button {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            color: #f26422;
+            font-weight: 600;
+        }
+        
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #f26422;
+        }
+        
+        .pricing-card {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            border-color: #f26422;
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card.popular {
+            border-color: #f26422;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(90deg, #f26422, #fa7e32);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            box-shadow: 0 4px 8px rgba(242, 100, 34, 0.3);
+        }
+        
+        .feature-check {
+            color: #10B981;
+        }
+        
+        .feature-cross {
+            color: #EF4444;
+        }
+        
+        .notification-panel {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 350px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            z-index: 101;
+            overflow: hidden;
+            display: none;
+        }
+        
+        .notification-header {
+            background: linear-gradient(90deg, #f26422, #fa7e32);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .notification-body {
+            max-height: 350px;
+            overflow-y: auto;
+        }
+        
+        .notification-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        .notification-item:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .notification-item.unread {
+            border-left: 3px solid #f26422;
+        }
+        
+        .notification-time {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .notification-footer {
+            padding: 10px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+        
+        .course-progress {
+            height: 6px;
+            background-color: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .course-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #f26422, #fa7e32);
+            border-radius: 3px;
+        }
+        
+        .instructor-badge {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .rating-stars {
+            display: inline-flex;
+            color: #FBBF24;
+        }
+        
+        .filter-active {
+            background-color: #f26422;
+            color: white;
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .course-level {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .course-duration {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .course-lectures {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .course-students {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .course-language {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .course-certificate {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .course-access {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .trending-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(90deg, #8B5CF6, #6366F1);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+        }
+        
+        .new-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(90deg, #10B981, #059669);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+        }
+        
+        .bestseller-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(90deg, #F59E0B, #D97706);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+        }
+        
+        .category-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover .category-icon {
+            transform: scale(1.1);
+        }
+        
+        .roadmap-step {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .roadmap-step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background-color: #f26422;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .roadmap-step::after {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background-color: #f26422;
+            z-index: 0;
+        }
+        
+        .roadmap-step:last-child::after {
+            display: none;
+        }
+        
+        .learning-path-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .learning-path-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .learning-path-progress {
+            height: 6px;
+            background-color: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .learning-path-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #f26422, #fa7e32);
+            border-radius: 3px;
+        }
+        
+        .blog-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .blog-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .blog-date {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .blog-author {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .blog-comments {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .blog-views {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .blog-read-time {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .blog-tag {
+            background-color: #f3f4f6;
+            color: #6B7280;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-tag:hover {
+            background-color: #f26422;
+            color: white;
+        }
+        
+        .course-filter-section {
+            transition: all 0.3s ease;
+        }
+        
+        .course-filter-section.collapsed {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+        
+        .course-filter-toggle {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .course-filter-toggle.collapsed .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        .course-search {
+            position: relative;
+        }
+        
+        .course-search input {
+            padding-left: 40px;
+        }
+        
+        .course-search i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9CA3AF;
+        }
+        
+        .course-grid-toggle, .course-list-toggle {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .course-grid-toggle.active, .course-list-toggle.active {
+            color: #f26422;
+        }
+        
+        .course-sort {
+            position: relative;
+        }
+        
+        .course-sort select {
+            padding-right: 30px;
+            appearance: none;
+        }
+        
+        .course-sort i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9CA3AF;
+            pointer-events: none;
+        }
+        
+        .course-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+        
+        .course-pagination-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .course-pagination-item:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .course-pagination-item.active {
+            background-color: #f26422;
+            color: white;
+        }
+        
+        .course-pagination-prev, .course-pagination-next {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .course-pagination-prev:hover, .course-pagination-next:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .course-pagination-prev.disabled, .course-pagination-next.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .course-list-view .course-card {
+            display: flex;
+            flex-direction: row;
+            height: auto;
+        }
+        
+        .course-list-view .course-card-img {
+            width: 300px;
+            height: 200px;
+        }
+        
+        .course-list-view .course-card-content {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .course-grid-view .course-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .course-grid-view .course-card-img {
+            width: 100%;
+            height: 200px;
+        }
+        
+        .course-grid-view .course-card-content {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .course-comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .course-comparison-table th, .course-comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .course-comparison-table th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+        
+        .course-comparison-table tr:hover {
+            background-color: #f8fafc;
+        }
+        
+        .course-comparison-table .feature-check {
+            color: #10B981;
+        }
+        
+        .course-comparison-table .feature-cross {
+            color: #EF4444;
+        }
+        
+        .course-comparison-table .course-comparison-price {
+            font-weight: 600;
+            color: #f26422;
+        }
+        
+        .course-comparison-table .course-comparison-btn {
+            background: linear-gradient(90deg, #f26422, #fa7e32);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .course-comparison-table .course-comparison-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(242, 100, 34, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Creator Badge -->
+    <div class="creator-badge">
+        <i class="fas fa-code mr-2"></i> Created by Amit Chaudhari
+    </div>
+    
+    <!-- Chat Bubble -->
+    <div class="chat-bubble" id="chatBubble">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    
+    <!-- Chat Panel -->
+    <div class="chat-panel" id="chatPanel">
+        <div class="chat-header">
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center mr-2">
+                    <i class="fas fa-robot text-orange-500"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold">Coding Assistant</h3>
+                    <div class="text-xs text-white text-opacity-80 live-indicator">Online</div>
+                </div>
+            </div>
+            <button id="closeChat" class="text-white hover:text-gray-200">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="message bot-message">
+                <div class="message-content">
+                    Hi there! 👋 I'm your Coding Ninjas assistant. How can I help you today?
+                </div>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Type your message...">
+            <button class="chat-send" id="sendMessage">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- News Ticker -->
+    <div class="ticker-wrap bg-orange-50">
+        <div class="ticker">
+            <div class="ticker-item">🔥 New Course: Advanced React & Redux - Starting Next Week</div>
+            <div class="ticker-item">🎓 Congratulations to our 500+ students who got placed this month!</div>
+            <div class="ticker-item">💰 Limited Time Offer: Use code NINJA50 for 50% off on all courses</div>
+            <div class="ticker-item">🚀 Join our free webinar on "How to Crack FAANG Interviews" - Register Now</div>
+            <div class="ticker-item">📱 Download our mobile app for learning on the go</div>
+            <div class="ticker-item">🏆 Our student ranked #1 in Google Kickstart coding competition</div>
+            <div class="ticker-item">📊 New Data Science Bootcamp launching next month - Early bird registrations open</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-10 mt-10">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-orange-500 flex items-center">
+                        <svg class="w-10 h-10 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#F26422"/>
+                            <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="#F26422" stroke-width="2"/>
+                        </svg>
+                        <span class="gradient-text">Coding Ninjas</span>
+                    </div>
+                    <div class="hidden lg:flex ml-10 space-x-1">
+                        <div class="mega-menu-trigger relative group">
+                            <a href="#" class="nav-link text-gray-700 hover:text-orange-500 font-medium px-4 py-2 flex items-center">
+                                Courses
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <div class="mega-menu absolute left-0 mt-2 w-screen max-w-6xl bg-white shadow-xl rounded-lg p-6 grid grid-cols-4 gap-6">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Programming Fundamentals</h3>
+                                    <ul class="space-y-2">
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-code mr-2 text-orange-500"></i> Introduction to Programming</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-laptop-code mr-2 text-orange-500"></i> C++ Foundation</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-java mr-2 text-orange-500"></i> Java Foundation</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-python mr-2 text-orange-500"></i> Python Foundation</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-database mr-2 text-orange-500"></i> SQL Fundamentals</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-js mr-2 text-orange-500"></i> JavaScript Essentials</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-terminal mr-2 text-orange-500"></i> Command Line & Git</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Web Development</h3>
+                                    <ul class="space-y-2">
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-html5 mr-2 text-orange-500"></i> Frontend Development</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-node-js mr-2 text-orange-500"></i> Backend Development</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-react mr-2 text-orange-500"></i> React.js</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-angular mr-2 text-orange-500"></i> Angular</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-vuejs mr-2 text-orange-500"></i> Vue.js</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-server mr-2 text-orange-500"></i> Full Stack Development</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-node mr-2 text-orange-500"></i> Node.js</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-database mr-2 text-orange-500"></i> MongoDB</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-aws mr-2 text-orange-500"></i> AWS for Web Developers</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Data & AI</h3>
+                                    <ul class="space-y-2">
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-brain mr-2 text-orange-500"></i> Machine Learning</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-robot mr-2 text-orange-500"></i> Artificial Intelligence</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-chart-bar mr-2 text-orange-500"></i> Data Science</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-database mr-2 text-orange-500"></i> Big Data</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-project-diagram mr-2 text-orange-500"></i> Deep Learning</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-python mr-2 text-orange-500"></i> Python for Data Science</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-table mr-2 text-orange-500"></i> Data Analysis with Pandas</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-chart-line mr-2 text-orange-500"></i> Data Visualization</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-cogs mr-2 text-orange-500"></i> Natural Language Processing</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Competitive Programming</h3>
+                                    <ul class="space-y-2">
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-code mr-2 text-orange-500"></i> Data Structures & Algorithms</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-trophy mr-2 text-orange-500"></i> Competitive Programming</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-laptop-code mr-2 text-orange-500"></i> Interview Preparation</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-puzzle-piece mr-2 text-orange-500"></i> Problem Solving</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-code-branch mr-2 text-orange-500"></i> Dynamic Programming</a></li>
+                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-sitemap mr-2 text-orange-500"></i> Graph Algorithms</a></li>
+                                    </ul>
+                                    <div class="mt-6 bg-orange-50 p-3 rounded-lg">
+                                        <p class="text-sm text-orange-600 font-medium">New Course Alert! 🔥</p>
+                                        <p class="text-xs text-gray-600">Advanced DSA for FAANG Interviews</p>
+                                        <a href="#" class="text-xs text-orange-500 font-medium hover:underline">Learn more →</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="nav-link text-gray-700 hover:text-orange-500 font-medium px-4 py-2">Practice</a>
+                        <div class="mega-menu-trigger relative group">
+                            <a href="#" class="nav-link text-gray-700 hover:text-orange-500 font-medium px-4 py-2 flex items-center">
+                                Events
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <div class="mega-menu absolute left-0 mt-2 w-64 bg-white shadow-xl rounded-lg p-4">
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-laptop mr-2 text-orange-500"></i> Webinars</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-chalkboard-teacher mr-2 text-orange-500"></i> Workshops</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-trophy mr-2 text-orange-500"></i> Coding Contests</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-users mr-2 text-orange-500"></i> Bootcamps</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-calendar-alt mr-2 text-orange-500"></i> Upcoming Events</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-graduation-cap mr-2 text-orange-500"></i> Career Fairs</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-handshake mr-2 text-orange-500"></i> Industry Connect</a></li>
+                                </ul>
+                                <div class="mt-4 bg-orange-50 p-3 rounded-lg">
+                                    <div class="text-sm text-orange-600 font-medium flex items-center">
+                                        <span class="live-indicator pl-0 pr-2">Live Now</span> Coding Contest
+                                    </div>
+                                    <a href="#" class="text-xs text-orange-500 font-medium hover:underline">Join now →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="nav-link text-gray-700 hover:text-orange-500 font-medium px-4 py-2">Campus</a>
+                        <a href="#" class="nav-link text-gray-700 hover:text-orange-500 font-medium px-4 py-2">Blog</a>
+                        <div class="mega-menu-trigger relative group">
+                            <a href="#" class="nav-link text-gray-700 hover:text-orange-500 font-medium px-4 py-2 flex items-center">
+                                More
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <div class="mega-menu absolute right-0 mt-2 w-64 bg-white shadow-xl rounded-lg p-4">
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-briefcase mr-2 text-orange-500"></i> Career Camp</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-user-tie mr-2 text-orange-500"></i> Hire From Us</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-question-circle mr-2 text-orange-500"></i> FAQs</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-headset mr-2 text-orange-500"></i> Support</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-info-circle mr-2 text-orange-500"></i> About Us</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-users mr-2 text-orange-500"></i> Our Team</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-building mr-2 text-orange-500"></i> Corporate Training</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-hands-helping mr-2 text-orange-500"></i> Become an Instructor</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="notificationBtn" class="text-gray-700 hover:text-orange-500 relative">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="notification-dot"></span>
+                        </button>
+                        <!-- Notification Panel -->
+                        <div class="notification-panel" id="notificationPanel">
+                            <div class="notification-header">
+                                <h3 class="font-semibold">Notifications</h3>
+                                <button id="closeNotifications" class="text-white hover:text-gray-200">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="notification-body">
+                                <div class="notification-item unread">
+                                    <h4 class="font-medium text-gray-800">New Course Available</h4>
+                                    <p class="text-sm text-gray-600">Advanced React & Redux course is now available.</p>
+                                    <p class="notification-time mt-1">2 hours ago</p>
+                                </div>
+                                <div class="notification-item unread">
+                                    <h4 class="font-medium text-gray-800">Upcoming Webinar</h4>
+                                    <p class="text-sm text-gray-600">Join our free webinar on "How to Crack FAANG Interviews".</p>
+                                    <p class="notification-time mt-1">5 hours ago</p>
+                                </div>
+                                <div class="notification-item">
+                                    <h4 class="font-medium text-gray-800">Assignment Reminder</h4>
+                                    <p class="text-sm text-gray-600">Your DSA assignment is due tomorrow.</p>
+                                    <p class="notification-time mt-1">Yesterday</p>
+                                </div>
+                                <div class="notification-item">
+                                    <h4 class="font-medium text-gray-800">New Blog Post</h4>
+                                    <p class="text-sm text-gray-600">Check out our latest blog on "Top 10 DSA Questions".</p>
+                                    <p class="notification-time mt-1">2 days ago</p>
+                                </div>
+                                <div class="notification-item">
+                                    <h4 class="font-medium text-gray-800">Course Completion</h4>
+                                    <p class="text-sm text-gray-600">Congratulations! You've completed the Python Foundation course.</p>
+                                    <p class="notification-time mt-1">3 days ago</p>
+                                </div>
+                                <div class="notification-item">
+                                    <h4 class="font-medium text-gray-800">New Job Opportunity</h4>
+                                    <p class="text-sm text-gray-600">Google is hiring! Check out the job posting in our career portal.</p>
+                                    <p class="notification-time mt-1">4 days ago</p>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#" class="text-orange-500 hover:text-orange-600 font-medium text-sm">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-switch-wrapper flex items-center">
+                        <span class="mr-2 text-sm text-gray-700"><i class="fas fa-sun"></i></span>
+                        <label class="theme-switch">
+                            <input type="checkbox" id="themeToggle">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="ml-2 text-sm text-gray-700"><i class="fas fa-moon"></i></span>
+                    </div>
+                    <a href="#" class="text-gray-700 hover:text-orange-500 font-medium">Login</a>
+                    <a href="#" class="btn-primary text-white px-6 py-2 rounded-md hover:bg-orange-600">Sign Up</a>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="lg:hidden hidden pt-4 pb-2 animate__animated animate__fadeIn">
+                <a href="#" class="block py-2 text-gray-700 hover:text-orange-500">Courses</a>
+                <a href="#" class="block py-2 text-gray-700 hover:text-orange-500">Practice</a>
+                <a href="#" class="block py-2 text-gray-700 hover:text-orange-500">Events</a>
+                <a href="#" class="block py-2 text-gray-700 hover:text-orange-500">Campus</a>
+                <a href="#" class="block py-2 text-gray-700 hover:text-orange-500">Blog</a>
+                <div class="pt-4 flex flex-col space-y-2">
+                    <a href="#" class="text-center text-gray-700 hover:text-orange-500 py-2 border border-gray-300 rounded-md">Login</a>
+                    <a href="#" class="text-center btn-primary text-white py-2 rounded-md hover:bg-orange-600">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-36 pb-24 px-4 relative overflow-hidden">
+        <!-- Background Blobs -->
+        <div class="blob bg-orange-200" style="width: 300px; height: 300px; top: 10%; left: 5%;"></div>
+        <div class="blob bg-blue-200" style="width: 250px; height: 250px; top: 40%; right: 10%;"></div>
+        
+        <div class="container mx-auto relative">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 animate__animated animate__fadeInLeft">
+                    <div class="inline-flex items-center bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                        <div class="pulse w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
+                        <span>Limited Time Offer: 50% OFF on all courses</span>
+                        <div class="ml-2 countdown-timer">
+                            <div class="countdown-box">
+                                <div class="countdown-value" id="days">02</div>
+                                <div class="countdown-label">Days</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-value" id="hours">18</div>
+                                <div class="countdown-label">Hours</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-value" id="minutes">45</div>
+                                <div class="countdown-label">Mins</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
+                        Accelerate Your <span class="gradient-text typing-animation">Coding Career</span> With Expert Skills
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8">Learn from industry experts and get placed in top companies. Join thousands of students who've transformed their careers with us.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#" class="btn-primary text-white px-8 py-3 rounded-md text-center font-medium flex items-center justify-center">
+                            <span>Explore Courses</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="btn-outline border-2 border-orange-500 text-orange-500 px-8 py-3 rounded-md text-center font-medium hover:bg-orange-50 flex items-center justify-center">
+                            <i class="fas fa-play-circle mr-2"></i>
+                            <span>Try For Free</span>
+                        </a>
+                    </div>
+                    <div class="mt-10 flex items-center">
+                        <div class="flex -space-x-3">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23F3F4F6'/%3E%3Cpath d='M20 24C23.3137 24 26 21.3137 26 18C26 14.6863 23.3137 12 20 12C16.6863 12 14 14.6863 14 18C14 21.3137 16.6863 24 20 24Z' fill='%23D1D5DB'/%3E%3Cpath d='M12 30C12 26.6863 15.5817 24 20 24C24.4183 24 28 26.6863 28 30' stroke='%23D1D5DB' stroke-width='2'/%3E%3C/svg%3E" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23F3F4F6'/%3E%3Cpath d='M20 24C23.3137 24 26 21.3137 26 18C26 14.6863 23.3137 12 20 12C16.6863 12 14 14.6863 14 18C14 21.3137 16.6863 24 20 24Z' fill='%23D1D5DB'/%3E%3Cpath d='M12 30C12 26.6863 15.5817 24 20 24C24.4183 24 28 26.6863 28 30' stroke='%23D1D5DB' stroke-width='2'/%3E%3C/svg%3E" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23F3F4F6'/%3E%3Cpath d='M20 24C23.3137 24 26 21.3137 26 18C26 14.6863 23.3137 12 20 12C16.6863 12 14 14.6863 14 18C14 21.3137 16.6863 24 20 24Z' fill='%23D1D5DB'/%3E%3Cpath d='M12 30C12 26.6863 15.5817 24 20 24C24.4183 24 28 26.6863 28 30' stroke='%23D1D5DB' stroke-width='2'/%3E%3C/svg%3E" alt="User">
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-orange-100 flex items-center justify-center text-orange-500 font-bold text-xs">+45K</div>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600">Joined by <span class="font-semibold">50,000+</span> students</p>
+                            <div class="flex items-center mt-1">
+                                <div class="flex">
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                </div>
+                                <p class="ml-1 text-sm text-gray-600">4.8/5 (2000+ reviews)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-10 animate__animated animate__fadeInRight">
+                    <div class="relative">
+                        <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-gray-100">
+                            <div class="absolute -top-3 -right-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium badge-bounce">
+                                <i class="fas fa-bolt mr-1"></i> Limited Time Offer
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-6">Start your coding journey today</h3>
+                            <form>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="name">Full Name</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-user text-gray-400"></i>
+                                        </div>
+                                        <input class="w-full pl-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" type="text" id="name" placeholder="Enter your name">
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="email">Email</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-envelope text-gray-400"></i>
+                                        </div>
+                                        <input class="w-full pl-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" type="email" id="email" placeholder="Enter your email">
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="phone">Phone Number</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-phone text-gray-400"></i>
+                                        </div>
+                                        <input class="w-full pl-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" type="tel" id="phone" placeholder="Enter your phone number">
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="course">Interested In</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-laptop-code text-gray-400"></i>
+                                        </div>
+                                        <select class="w-full pl-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 appearance-none" id="course">
+                                            <option value="">Select a course</option>
+                                            <option value="web">Web Development</option>
+                                            <option value="data">Data Structures & Algorithms</option>
+                                            <option value="ml">Machine Learning</option>
+                                            <option value="android">Android Development</option>
+                                            <option value="ios">iOS Development</option>
+                                            <option value="devops">DevOps</option>
+                                            <option value="blockchain">Blockchain</option>
+                                            <option value="cloud">Cloud Computing</option>
+                                            <option value="cyber">Cybersecurity</option>
+                                            <option value="ui">UI/UX Design</option>
+                                            <option value="game">Game Development</option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                            <i class="fas fa-chevron-down text-gray-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="w-full btn-primary text-white py-3 rounded-md font-medium hover:opacity-90 transition flex items-center justify-center">
+                                    <span>Get Started</span>
+                                    <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </form>
+                            <div class="mt-4 text-center text-xs text-gray-500">
+                                <i class="fas fa-lock mr-1"></i> Your information is secure and will not be shared
+                            </div>
+                        </div>
+                        
+                        <!-- Code Editor Animation -->
+                        <div class="absolute -bottom-16 -left-16 w-32 h-32 rotate-slow hidden md:block">
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#F26422" d="M41.3,-59.1C53.9,-51.1,64.6,-39.6,70.2,-25.9C75.8,-12.3,76.4,3.6,72.1,17.9C67.8,32.2,58.6,45,46.3,53.2C34,61.4,18.7,65.1,3.2,62.1C-12.2,59.1,-27.7,49.5,-39.9,38.1C-52.1,26.7,-61,13.3,-64.1,-1.8C-67.2,-16.9,-64.5,-33.9,-55.3,-43.5C-46.1,-53.1,-30.5,-55.4,-16.5,-62.2C-2.5,-69,11.5,-80.3,24.5,-77.7C37.5,-75.1,49.5,-58.6,41.3,-59.1Z" transform="translate(100 100)" />
+                            </svg>
+                        </div>
+                        
+                        <div class="absolute -top-10 -right-10 code-editor w-64 shadow-lg hidden md:block">
+                            <div class="code-editor-header">
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                </div>
+                                <div class="text-xs">main.js</div>
+                            </div>
+                            <div class="code-editor-body text-xs">
+                                <div class="code-line">
+                                    <span class="line-number">1</span>
+                                    <span class="keyword">function</span> <span class="function">learnToCode</span>() {
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-number">2</span>
+                                    &nbsp;&nbsp;<span class="keyword">const</span> <span class="variable">skills</span> = [<span class="string">'HTML'</span>, <span class="string">'CSS'</span>, <span class="string">'JS'</span>];
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-number">3</span>
+                                    &nbsp;&nbsp;<span class="keyword">return</span> <span class="string">'Success!'</span>;
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-number">4</span>
+                                    }
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-number">5</span>
+                                    <span class="comment">// Start your journey</span>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-number">6</span>
+                                    <span class="function">learnToCode</span>();<span class="cursor"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="flex flex-col items-center">
+                <span class="text-sm text-gray-500 mb-2">Scroll to explore</span>
+                <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Shape Divider -->
+        <div class="custom-shape-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-4">
+                    <div class="text-3xl md:text-4xl font-bold text-orange-500 mb-2 stats-counter" data-target="50000">0</div>
+                    <p class="text-gray-600">Students Enrolled</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl md:text-4xl font-bold text-orange-500 mb-2 stats-counter" data-target="1200">0</div>
+                    <p class="text-gray-600">Successful Placements</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl md:text-4xl font-bold text-orange-500 mb-2 stats-counter" data-target="150">0</div>
+                    <p class="text-gray-600">Courses Available</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl md:text-4xl font-bold text-orange-500 mb-2 stats-counter" data-target="100">0</div>
+                    <p class="text-gray-600">Industry Partners</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Categories Section -->
+    <section class="py-16 bg-gray-50 px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-12">
+                <span class="inline-block bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-semibold mb-4">
+                    <i class="fas fa-th-large mr-2"></i>COURSE CATEGORIES
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Browse Our Top Categories</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore our wide range of courses across different domains to find the perfect match for your career goals.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- Category 1 -->
+                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="category-icon bg-blue-100 mx-auto">
+                        <i class="fas fa-laptop-code text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Web Development</h3>
+                    <p class="text-sm text-gray-600 mb-3">35 Courses</p>
+                    <a href="#" class="text-orange-500 text-sm font-medium hover:underline">Explore <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Category 2 -->
+                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="category-icon bg-purple-100 mx-auto">
+                        <i class="fas fa-mobile-alt text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">App Development</h3>
+                    <p class="text-sm text-gray-600 mb-3">28 Courses</p>
+                    <a href="#" class="text-orange-500 text-sm font-medium hover:underline">Explore <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Category 3 -->
+                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="category-icon bg-green-100 mx-auto">
+                        <i class="fas fa-code text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">DSA</h3>
+                    <p class="text-sm text-gray-600 mb-3">42 Courses</p>
+                    <a href="#" class="text-orange-500 text-sm font-medium hover:underline">Explore <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Category 4 -->
+                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="category-icon bg-yellow-100 mx-auto">
+                        <i class="fas fa-brain text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Machine Learning</h3>
+                    <p class="text-sm text-gray-600 mb-3">18 Courses</p>
+                    <a href="#" class="text-orange-500 text-sm font-medium hover:underline">Explore <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Category 5 -->
+                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="category-icon bg-red-100 mx-auto">
+                        <i class="fas fa-database text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Database</h3>
+                    <p class="text-sm text-gray-600 mb-3">15 Courses</p>
+                    <a href="#" class="text-orange-500 text-sm font-medium hover:underline">Explore <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Category 6 -->
+                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="category-icon bg-indigo-100 mx-auto">
+                        <i class="fas fa-cloud text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Cloud Computing</h3>
+                    <p class="text-sm text-gray-600 mb-3">12 Courses</p>
+                    <a href="#" class="text-orange-500 text-sm font-medium hover:underline">Explore <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="btn-outline border-2 border-orange-500 text-orange-500 px-8 py-3 rounded-md inline-block font-medium hover:bg-orange-50">
+                    View All Categories
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Courses Section -->
+    <section class="py-16 bg-white px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-12">
+                <span class="inline-block bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-semibold mb-4">
+                    <i class="fas fa-star mr-2"></i>POPULAR COURSES
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Most Popular Courses</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Join thousands of students who have already taken these courses and transformed their careers.</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center mb-8">
+                <button class="filter-btn px-4 py-2 m-1 rounded-md filter-active">All Courses</button>
+                <button class="filter-btn px-4 py-2 m-1 rounded-md bg-gray-100 hover:bg-gray-200">Web Development</button>
+                <button class="filter-btn px-4 py-2 m-1 rounded-md bg-gray-100 hover:bg-gray-200">Data Structures</button>
+                <button class="filter-btn px-4 py-2 m-1 rounded-md bg-gray-100 hover:bg-gray-200">Machine Learning</button>
+                <button class="filter-btn px-4 py-2 m-1 rounded-md bg-gray-100 hover:bg-gray-200">Mobile Development</button>
+                <button class="filter-btn px-4 py-2 m-1 rounded-md bg-gray-100 hover:bg-gray-200">Cloud Computing</button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course 1 -->
+                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/600x400/4F46E5/FFFFFF?text=Web+Development" alt="Web Development" class="w-full h-48 object-cover">
+                        <div class="bestseller-tag">Bestseller</div>
+                        <div class="course-level">Beginner</div>
+                        <div class="instructor-badge flex items-center">
+                            <i class="fas fa-user-tie mr-2"></i> John Smith
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="text-gray-600 ml-1">4.8 (2.5k)</span>
+                            </div>
+                            <div class="text-orange-500 font-bold">$49.99</div>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2 text-gray-800">Complete Web Development Bootcamp</h3>
+                        <p class="text-gray-600 text-sm mb-4">Learn HTML, CSS, JavaScript, React, Node.js and more to become a full-stack web developer.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">HTML</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">CSS</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">React</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-4">
+                            <div class="course-duration flex items-center">
+                                <i class="far fa-clock mr-1"></i> 42 hours
+                            </div>
+                            <div class="course-lectures flex items-center">
+                                <i class="far fa-play-circle mr-1"></i> 150 lectures
+                            </div>
+                            <div class="course-students flex items-center">
+                                <i class="fas fa-user-graduate mr-1"></i> 10.5k students
+                            </div>
+                        </div>
+                        <div class="course-progress mb-4">
+                            <div class="course-progress-bar" style="width: 75%"></div>
+                        </div>
+                        <a href="#" class="btn-primary text-white py-2 px-4 rounded-md w-full block text-center font-medium">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/600x400/10B981/FFFFFF?text=Data+Structures" alt="Data Structures" class="w-full h-48 object-cover">
+                        <div class="trending-tag">Trending</div>
+                        <div class="course-level">Intermediate</div>
+                        <div class="instructor-badge flex items-center">
+                            <i class="fas fa-user-tie mr-2"></i> Sarah Johnson
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 ml-1">5.0 (1.8k)</span>
+                            </div>
+                            <div class="text-orange-500 font-bold">$59.99</div>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2 text-gray-800">Master Data Structures & Algorithms</h3>
+                        <p class="text-gray-600 text-sm mb-4">Learn all the important data structures and algorithms needed to ace technical interviews.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Arrays</span>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Linked Lists</span>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Trees</span>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Graphs</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-4">
+                            <div class="course-duration flex items-center">
+                                <i class="far fa-clock mr-1"></i> 38 hours
+                            </div>
+                            <div class="course-lectures flex items-center">
+                                <i class="far fa-play-circle mr-1"></i> 120 lectures
+                            </div>
+                            <div class="course-students flex items-center">
+                                <i class="fas fa-user-graduate mr-1"></i> 8.2k students
+                            </div>
+                        </div>
+                        <div class="course-progress mb-4">
+                            <div class="course-progress-bar" style="width: 60%"></div>
+                        </div>
+                        <a href="#" class="btn-primary text-white py-2 px-4 rounded-md w-full block text-center font-medium">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/600x400/F59E0B/FFFFFF?text=Machine+Learning" alt="Machine Learning" class="w-full h-48 object-cover">
+                        <div class="new-tag">New</div>
+                        <div class="course-level">Advanced</div>
+                        <div class="instructor-badge flex items-center">
+                            <i class="fas fa-user-tie mr-2"></i> Michael Chen
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-gray-600 ml-1">4.0 (950)</span>
+                            </div>
+                            <div class="text-orange-500 font-bold">$69.99</div>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2 text-gray-800">Machine Learning A-Z: Hands-On Python</h3>
+                        <p class="text-gray-600 text-sm mb-4">Learn to create Machine Learning Algorithms in Python. Prepare for a career in Data Science.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Python</span>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">TensorFlow</span>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Neural Networks</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-4">
+                            <div class="course-duration flex items-center">
+                                <i class="far fa-clock mr-1"></i> 45 hours
+                            </div>
+                            <div class="course-lectures flex items-center">
+                                <i class="far fa-play-circle mr-1"></i> 180 lectures
+                            </div>
+                            <div class="course-students flex items-center">
+                                <i class="fas fa-user-graduate mr-1"></i> 5.8k students
+                            </div>
+                        </div>
+                        <div class="course-progress mb-4">
+                            <div class="course-progress-bar" style="width: 40%"></div>
+                        </div>
+                        <a href="#" class="btn-primary text-white py-2 px-4 rounded-md w-full block text-center font-medium">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <!-- Course 4 -->
+                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/600x400/EF4444/FFFFFF?text=React+Native" alt="React Native" class="w-full h-48 object-cover">
+                        <div class="bestseller-tag">Bestseller</div>
+                        <div class="course-level">Intermediate</div>
+                        <div class="instructor-badge flex items-center">
+                            <i class="fas fa-user-tie mr-2"></i> Emily Davis
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="text-gray-600 ml-1">4.7 (1.2k)</span>
+                            </div>
+                            <div class="text-orange-500 font-bold">$54.99</div>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2 text-gray-800">React Native: Mobile App Development</h3>
+                        <p class="text-gray-600 text-sm mb-4">Build native mobile apps for Android and iOS using React Native. Learn once, write anywhere.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">React</span>
+                            <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
+                            <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Mobile</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-4">
+                            <div class="course-duration flex items-center">
+                                <i class="far fa-clock mr-1"></i> 32 hours
+                            </div>
+                            <div class="course-lectures flex items-center">
+                                <i class="far fa-play-circle mr-1"></i> 110 lectures
+                            </div>
+                            <div class="course-students flex items-center">
+                                <i class="fas fa-user-graduate mr-1"></i> 7.5k students
+                            </div>
+                        </div>
+                        <div class="course-progress mb-4">
+                            <div class="course-progress-bar" style="width: 85%"></div>
+                        </div>
+                        <a href="#" class="btn-primary text-white py-2 px-4 rounded-md w-full block text-center font-medium">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <!-- Course 5 -->
+                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/600x400/8B5CF6/FFFFFF?text=AWS+Cloud" alt="AWS Cloud" class="w-full h-48 object-cover">
+                        <div class="trending-tag">Trending</div>
+                        <div class="course-level">Advanced</div>
+                        <div class="instructor-badge flex items-center">
+                            <i class="fas fa-user-tie mr-2"></i> Robert Wilson
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 ml-1">4.9 (850)</span>
+                            </div>
+                            <div class="text-orange-500 font-bold">$64.99</div>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2 text-gray-800">AWS Certified Solutions Architect</h3>
+                        <p class="text-gray-600 text-sm mb-4">Prepare for the AWS Solutions Architect Associate certification with hands-on practice.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">AWS</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Cloud</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">DevOps</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-4">
+                            <div class="course-duration flex items-center">
+                                <i class="far fa-clock mr-1"></i> 36 hours
+                            </div>
+                            <div class="course-lectures flex items-center">
+                                <i class="far fa-play-circle mr-1"></i> 130 lectures
+                            </div>
+                            <div class="course-students flex items-center">
+                                <i class="fas fa-user-graduate mr-1"></i> 4.2k students
+                            </div>
+                        </div>
+                        <div class="course-progress mb-4">
+                            <div class="course-progress-bar" style="width: 65%"></div>
+                        </div>
+                        <a href="#" class="btn-primary text-white py-2 px-4 rounded-md w-full block text-center font-medium">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <!-- Course 6 -->
+                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/600x400/EC4899/FFFFFF?text=UI+UX+Design" alt="UI UX Design" class="w-full h-48 object-cover">
+                        <div class="new-tag">New</div>
+                        <div class="course-level">Beginner</div>
+                        <div class="instructor-badge flex items-center">
+                            <i class="fas fa-user-tie mr-2"></i> Jessica Lee
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-gray-600 ml-1">4.2 (620)</span>
+                            </div<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'967c5b5cd5aa741b',t:'MTc1Mzk1NzE2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
