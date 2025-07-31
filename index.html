@@ -3,33 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Ninjas Clone | Created by Amit Chaudhari</title>
+    <title>Coding Ninja Academy</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap');
+        
         :root {
-            --primary: #f26422;
-            --primary-dark: #e05a1c;
-            --secondary: #2d3748;
+            --primary: #6d28d9;
+            --primary-dark: #5b21b6;
+            --secondary: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
         }
         
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
-            overflow-x: hidden;
         }
         
-        .gradient-bg {
-            background: linear-gradient(90deg, #f26422, #fa7e32);
+        .code-font {
+            font-family: 'Roboto Mono', monospace;
         }
         
-        .gradient-text {
-            background: linear-gradient(90deg, #f26422, #fa7e32);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .hero-bg {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
         
         .card-hover {
@@ -37,74 +36,132 @@
         }
         
         .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         
-        .testimonial-card {
-            transition: all 0.4s ease;
-        }
-        
-        .testimonial-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        .course-card {
-            transition: all 0.4s ease;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .course-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .feature-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover .feature-icon {
-            transform: scale(1.15);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(90deg, #f26422, #fa7e32);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(242, 100, 34, 0.4);
-        }
-        
-        .btn-outline {
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(242, 100, 34, 0.2);
-        }
-        
-        .nav-link {
+        .terminal {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             position: relative;
         }
         
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
+        .terminal-header {
+            display: flex;
+            margin-bottom: 15px;
         }
         
-        .nav-link:hover::after {
-            width: 100%;
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .terminal-red { background-color: #ff5f56; }
+        .terminal-yellow { background-color: #ffbd2e; }
+        .terminal-green { background-color: #27c93f; }
+        
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: var(--secondary);
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .typing {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--secondary);
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--secondary) }
+        }
+        
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .ninja-path {
+            position: relative;
+        }
+        
+        .ninja-path::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--primary);
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+        
+        .path-point {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .path-point::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        
+        .code-block {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .code-block::before {
+            content: '1\A 2\A 3\A 4\A 5\A 6\A 7\A 8\A 9\A 10';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            text-align: right;
+            padding-right: 10px;
+            color: #6b7280;
+            white-space: pre;
+            border-right: 1px solid #374151;
+            user-select: none;
+        }
+        
+        .code-content {
+            margin-left: 35px;
         }
         
         .floating {
@@ -117,469 +174,437 @@
             100% { transform: translateY(0px); }
         }
         
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .badge-bounce {
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        .creator-badge {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #f26422, #fa7e32);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(242, 100, 34, 0.3);
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-        
-        .creator-badge:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(242, 100, 34, 0.4);
-        }
-        
-        .stats-counter {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-        }
-        
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            z-index: -1;
-            opacity: 0.6;
-        }
-        
-        .course-tag {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 12px;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            animation: pulse 2s infinite;
-        }
-        
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-        
-        .custom-shape-divider {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-        }
-        
-        .custom-shape-divider svg {
+        .nav-link {
             position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 70px;
         }
         
-        .custom-shape-divider .shape-fill {
-            fill: #F3F4F6;
-        }
-        
-        .glow-effect {
-            box-shadow: 0 0 15px rgba(242, 100, 34, 0.5);
-        }
-        
-        .shimmer {
-            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
-            background-size: 200% 100%;
-            animation: shimmer 2s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        
-        .rotate-slow {
-            animation: rotate 15s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .typing-animation::after {
-            content: '|';
-            animation: blink 1s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        
-        .mega-menu {
-            visibility: hidden;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-        }
-        
-        .mega-menu-trigger:hover .mega-menu {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .notification-dot {
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            width: 8px;
-            height: 8px;
-            background-color: #EF4444;
-            border-radius: 50%;
-        }
-        
-        .live-indicator {
-            position: relative;
-            padding-left: 16px;
-        }
-        
-        .live-indicator::before {
+        .nav-link::after {
             content: '';
             position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
             left: 0;
-            top: 50%;
-            transform: translateY(-50%);
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active-nav::after {
+            width: 100%;
+        }
+        
+        /* Skill tree animation */
+        .skill-node {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .skill-node:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(109, 40, 217, 0.5);
+        }
+        
+        .skill-connection {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 2s linear forwards;
+        }
+        
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        /* Testimonial carousel */
+        .testimonial-container {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
-            background-color: #EF4444;
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
         }
         
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            height: 40px;
-            background: rgba(242, 100, 34, 0.1);
-            padding-left: 100%;
-            box-sizing: content-box;
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
         }
         
-        .ticker {
-            display: inline-block;
-            white-space: nowrap;
-            padding-right: 100%;
-            box-sizing: content-box;
-            animation: ticker 30s linear infinite;
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
         }
         
-        @keyframes ticker {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-100%, 0, 0); }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
         }
         
-        .ticker-item {
-            display: inline-block;
-            padding: 0 2rem;
-        }
-        
-        .progress-bar {
-            height: 4px;
-            background: linear-gradient(90deg, #f26422, #fa7e32);
-            width: 0%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            transition: width 0.2s ease;
-        }
-        
-        .tooltip {
-            position: relative;
-        }
-        
-        .tooltip-text {
-            visibility: hidden;
-            width: 120px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -60px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .tooltip:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
-        }
-        
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #f26422;
-            opacity: 0.8;
-        }
-        
-        .theme-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 30px;
-        }
-        
-        .theme-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 30px;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 22px;
-            width: 22px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .slider {
-            background-color: #f26422;
-        }
-        
-        input:checked + .slider:before {
-            transform: translateX(30px);
-        }
-        
-        .dark-mode {
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-        }
-        
-        .dark-mode .bg-white {
-            background-color: #2a2a2a;
-        }
-        
-        .dark-mode .text-gray-800 {
-            color: #f5f5f5;
-        }
-        
-        .dark-mode .text-gray-600 {
-            color: #d1d1d1;
-        }
-        
-        .dark-mode .border-gray-300 {
-            border-color: #444;
-        }
-        
-        .dark-mode .bg-gray-50 {
-            background-color: #1a1a1a;
-        }
-        
-        .dark-mode .bg-gray-100 {
-            background-color: #2a2a2a;
-        }
-        
-        .dark-mode .shadow-md {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-        
-        .dark-mode .shadow-lg {
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .dark-mode .border-gray-100 {
-            border-color: #444;
-        }
-        
+        /* Code editor */
         .code-editor {
-            font-family: 'Courier New', monospace;
-            background-color: #282c34;
-            color: #abb2bf;
+            background-color: #1e1e1e;
             border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
-        .code-editor-header {
-            background-color: #21252b;
+        .editor-header {
+            background-color: #252526;
             padding: 10px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid #333;
         }
         
-        .code-editor-body {
+        .editor-tabs {
+            display: flex;
+        }
+        
+        .editor-tab {
+            padding: 5px 15px;
+            background-color: #2d2d2d;
+            color: #ddd;
+            margin-right: 2px;
+            border-radius: 4px 4px 0 0;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        
+        .editor-tab.active {
+            background-color: #1e1e1e;
+            color: white;
+        }
+        
+        .editor-content {
             padding: 15px;
-            position: relative;
+            color: #ddd;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .line-numbers {
+            color: #858585;
+            text-align: right;
+            padding-right: 10px;
+            user-select: none;
         }
         
         .code-line {
             display: flex;
         }
         
-        .line-number {
-            color: #636d83;
-            min-width: 30px;
-            text-align: right;
-            padding-right: 10px;
-            user-select: none;
+        .code-text {
+            padding-left: 10px;
+            flex-grow: 1;
         }
         
-        .keyword {
-            color: #c678dd;
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .comment { color: #6a9955; }
+        .function { color: #dcdcaa; }
+        .variable { color: #9cdcfe; }
+        .number { color: #b5cea8; }
+        .operator { color: #d4d4d4; }
+        
+        /* Live coding challenge */
+        .challenge-container {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
         }
         
-        .string {
-            color: #98c379;
+        .challenge-header {
+            background-color: #f9fafb;
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
         }
         
-        .comment {
-            color: #5c6370;
-            font-style: italic;
+        .challenge-content {
+            padding: 20px;
         }
         
-        .function {
-            color: #61afef;
+        .challenge-output {
+            background-color: #f9fafb;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            min-height: 100px;
         }
         
-        .variable {
-            color: #e06c75;
-        }
-        
-        .cursor {
-            display: inline-block;
-            width: 2px;
-            height: 18px;
-            background-color: #fff;
-            animation: blink 1s infinite;
-            vertical-align: middle;
-        }
-        
-        .chat-bubble {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #f26422, #fa7e32);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            box-shadow: 0 4px 12px rgba(242, 100, 34, 0.3);
-            cursor: pointer;
-            z-index: 100;
+        /* Pricing table */
+        .pricing-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
             transition: all 0.3s ease;
         }
         
-        .chat-bubble:hover {
-            transform: scale(1.1);
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         
-        .chat-panel {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 350px;
-            height: 450px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-            z-index: 101;
-            overflow: hidden;
-            display: none;
-            flex-direction: column;
+        .pricing-popular {
+            border: 2px solid var(--primary);
+            position: relative;
         }
         
-        .chat-header {
-            background: linear-gradient(90deg, #f26422, #fa7e32);
+        .pricing-popular::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background-color: var(--primary);
             color: white;
-            padding: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+        }
+        
+        /* FAQ accordion */
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .faq-question {
+            cursor: pointer;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
-        .chat-body {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
         }
         
-        .chat-footer {
-            padding: 10px;
-            border-top: 1px solid #eee;
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 1000px;
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             display: flex;
+            align-items: center;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            z-index: 50;
         }
         
-        .chat-input {
-            flex: 1;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            padding: 8px 15px;
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        /* Live code playground */
+        .playground-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            height: 400px;
+        }
+        
+        .playground-editor {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .playground-preview {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: white;
+        }
+        
+        .playground-tabs {
+            display: flex;
+            background-color: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .playground-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-right: 1px solid #e5e7eb;
+        }
+        
+        .playground-tab.active {
+            background-color: white;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .playground-editor-content {
+            height: calc(100% - 41px);
+            padding: 10px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            resize: none;
+            border: none;
             outline: none;
         }
         
-        .chat-send {
-            background: linear-gradient(90deg, #f26422, #fa7e32);
+        .playground-preview-content {
+            height: 100%;
+            padding: 20px;
+            overflow: auto;
+        }
+        
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Chat bot */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        .chatbot-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            z-index: 50;
+            transform: scale(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+        
+        .chatbot-container.show {
+            transform: scale(1);
+        }
+        
+        .chatbot-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chatbot-message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+            word-break: break-word;
+        }
+        
+        .chatbot-message.bot {
+            background-color: #f0f0f0;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .chatbot-message.user {
+            background-color: var(--primary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .chatbot-input input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            outline: none;
+        }
+        
+        .chatbot-input button {
+            background-color: var(--primary);
             color: white;
             border: none;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            width: 36px;
-            height: 36px;
             margin-left: 10px;
             cursor: pointer;
             display: flex;
@@ -587,1592 +612,1214 @@
             justify-content: center;
         }
         
-        .message {
-            margin-bottom: 10px;
-            max-width: 80%;
-        }
-        
-        .message-content {
-            padding: 10px 15px;
-            border-radius: 18px;
-        }
-        
-        .user-message {
-            margin-left: auto;
-        }
-        
-        .user-message .message-content {
-            background: #f0f0f0;
-        }
-        
-        .bot-message .message-content {
-            background: #f26422;
-            color: white;
-        }
-        
-        .typing-indicator {
+        /* Course filter */
+        .filter-container {
             display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background: #f26422;
-            border-radius: 50%;
-            margin-right: 4px;
-            animation: typingAnimation 1.5s infinite ease-in-out;
-        }
-        
-        .typing-dot:nth-child(1) {
-            animation-delay: 0s;
-        }
-        
-        .typing-dot:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-        
-        .typing-dot:nth-child(3) {
-            animation-delay: 0.6s;
-            margin-right: 0;
-        }
-        
-        @keyframes typingAnimation {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-        
-        .countdown-timer {
-            display: flex;
-            justify-content: center;
+            flex-wrap: wrap;
             gap: 10px;
+            margin-bottom: 20px;
         }
         
-        .countdown-box {
-            background: linear-gradient(135deg, #f26422, #fa7e32);
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            min-width: 60px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(242, 100, 34, 0.3);
-        }
-        
-        .countdown-value {
-            font-size: 24px;
-            font-weight: bold;
-            line-height: 1;
-        }
-        
-        .countdown-label {
-            font-size: 12px;
-            opacity: 0.8;
-        }
-        
-        .event-card {
-            border-left: 4px solid #f26422;
-            transition: all 0.3s ease;
-        }
-        
-        .event-card:hover {
-            transform: translateX(5px);
-        }
-        
-        .accordion-header {
+        .filter-tag {
+            padding: 8px 16px;
+            background-color: #f3f4f6;
+            border-radius: 20px;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
         
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
+        .filter-tag:hover {
+            background-color: #e5e7eb;
         }
         
-        .accordion-item.active .accordion-content {
-            max-height: 500px;
+        .filter-tag.active {
+            background-color: var(--primary);
+            color: white;
         }
         
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .tab-button {
+        /* Animated counter */
+        .counter-animation {
+            display: inline-block;
             position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .tab-button.active {
-            color: #f26422;
-            font-weight: 600;
-        }
-        
-        .tab-button.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #f26422;
-        }
-        
-        .pricing-card {
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .pricing-card:hover {
-            border-color: #f26422;
-            transform: translateY(-10px);
-        }
-        
-        .pricing-card.popular {
-            border-color: #f26422;
-            transform: scale(1.05);
-        }
-        
-        .pricing-card.popular:hover {
-            transform: scale(1.05) translateY(-5px);
-        }
-        
-        .popular-badge {
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background: linear-gradient(90deg, #f26422, #fa7e32);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 12px;
-            box-shadow: 0 4px 8px rgba(242, 100, 34, 0.3);
-        }
-        
-        .feature-check {
-            color: #10B981;
-        }
-        
-        .feature-cross {
-            color: #EF4444;
-        }
-        
-        .notification-panel {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            width: 350px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-            z-index: 101;
+            height: 1.5em;
             overflow: hidden;
-            display: none;
+            vertical-align: middle;
         }
         
-        .notification-header {
-            background: linear-gradient(90deg, #f26422, #fa7e32);
+        .counter-digit {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 1s ease;
+        }
+        
+        /* Interactive skill tree */
+        .skill-tree {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .skill-tree-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+        }
+        
+        .skill-node {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        
+        .skill-node:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .skill-node.active {
+            border: 3px solid var(--primary);
+        }
+        
+        .skill-node-icon {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        
+        .skill-node-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .skill-connection {
+            position: absolute;
+            z-index: 1;
+        }
+        
+        /* Course progress tracker */
+        .course-progress {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-progress-header {
+            background-color: var(--primary);
             color: white;
-            padding: 15px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
-        .notification-body {
-            max-height: 350px;
+        .course-progress-content {
+            padding: 20px;
+        }
+        
+        .course-progress-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .course-progress-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .course-progress-check {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .course-progress-check.completed {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .course-progress-info {
+            flex-grow: 1;
+        }
+        
+        /* Interactive code playground */
+        .interactive-playground {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .playground-header {
+            background-color: #f9fafb;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .playground-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 400px;
+        }
+        
+        .playground-code {
+            border-right: 1px solid #e5e7eb;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .playground-code-header {
+            background-color: #f3f4f6;
+            padding: 10px 15px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+        }
+        
+        .playground-code-tab {
+            padding: 5px 10px;
+            margin-right: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .playground-code-tab.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .playground-code-editor {
+            flex-grow: 1;
+            padding: 15px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
             overflow-y: auto;
         }
         
-        .notification-item {
+        .playground-result {
             padding: 15px;
-            border-bottom: 1px solid #eee;
-            transition: all 0.3s ease;
+            overflow-y: auto;
         }
         
-        .notification-item:hover {
-            background-color: #f9f9f9;
-        }
-        
-        .notification-item.unread {
-            border-left: 3px solid #f26422;
-        }
-        
-        .notification-time {
-            font-size: 12px;
-            color: #888;
-        }
-        
-        .notification-footer {
-            padding: 10px;
-            text-align: center;
-            border-top: 1px solid #eee;
-        }
-        
-        .course-progress {
-            height: 6px;
-            background-color: #e2e8f0;
-            border-radius: 3px;
+        /* Community forum */
+        .forum-post {
+            background-color: white;
+            border-radius: 8px;
             overflow: hidden;
-        }
-        
-        .course-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #f26422, #fa7e32);
-            border-radius: 3px;
-        }
-        
-        .instructor-badge {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .rating-stars {
-            display: inline-flex;
-            color: #FBBF24;
-        }
-        
-        .filter-active {
-            background-color: #f26422;
-            color: white;
-        }
-        
-        .filter-btn {
-            transition: all 0.3s ease;
-        }
-        
-        .filter-btn:hover {
-            transform: translateY(-2px);
-        }
-        
-        .course-level {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .course-duration {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #6B7280;
-        }
-        
-        .course-lectures {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #6B7280;
-        }
-        
-        .course-students {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #6B7280;
-        }
-        
-        .course-language {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #6B7280;
-        }
-        
-        .course-certificate {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #6B7280;
-        }
-        
-        .course-access {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #6B7280;
-        }
-        
-        .trending-tag {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(90deg, #8B5CF6, #6366F1);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 12px;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
-        }
-        
-        .new-tag {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(90deg, #10B981, #059669);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 12px;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
-        }
-        
-        .bestseller-tag {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(90deg, #F59E0B, #D97706);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 12px;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
-        }
-        
-        .category-card {
-            transition: all 0.3s ease;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        .category-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .category-card:hover .category-icon {
-            transform: scale(1.1);
-        }
-        
-        .roadmap-step {
-            position: relative;
-            padding-left: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             margin-bottom: 20px;
         }
         
-        .roadmap-step::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 20px;
-            height: 20px;
-            background-color: #f26422;
+        .forum-post-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .forum-post-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .forum-post-avatar {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            z-index: 1;
+            margin-right: 10px;
         }
         
-        .roadmap-step::after {
-            content: '';
-            position: absolute;
-            left: 9px;
-            top: 20px;
-            width: 2px;
-            height: calc(100% + 10px);
-            background-color: #f26422;
-            z-index: 0;
+        .forum-post-content {
+            padding: 20px;
         }
         
-        .roadmap-step:last-child::after {
-            display: none;
+        .forum-post-footer {
+            padding: 10px 20px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f9fafb;
         }
         
-        .learning-path-card {
-            transition: all 0.3s ease;
-            border-radius: 12px;
+        .forum-post-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .forum-post-action {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+            color: #6b7280;
+            cursor: pointer;
+        }
+        
+        .forum-post-action:hover {
+            color: var(--primary);
+        }
+        
+        .forum-post-action i {
+            margin-right: 5px;
+        }
+        
+        /* Gamification elements */
+        .gamification-card {
+            background-color: white;
+            border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
-        .learning-path-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        .gamification-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .learning-path-progress {
+        .gamification-content {
+            padding: 20px;
+        }
+        
+        .achievement {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .achievement:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .achievement-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            color: #9ca3af;
+        }
+        
+        .achievement.unlocked .achievement-icon {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .achievement-info {
+            flex-grow: 1;
+        }
+        
+        .achievement-progress {
+            width: 100%;
             height: 6px;
-            background-color: #e2e8f0;
+            background-color: #e5e7eb;
             border-radius: 3px;
+            margin-top: 5px;
             overflow: hidden;
         }
         
-        .learning-path-progress-bar {
+        .achievement-progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, #f26422, #fa7e32);
+            background-color: var(--primary);
             border-radius: 3px;
         }
         
-        .blog-card {
-            transition: all 0.3s ease;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        .blog-category {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .blog-date {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #6B7280;
-        }
-        
-        .blog-author {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #6B7280;
-        }
-        
-        .blog-comments {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #6B7280;
-        }
-        
-        .blog-views {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #6B7280;
-        }
-        
-        .blog-read-time {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #6B7280;
-        }
-        
-        .blog-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 10px;
-        }
-        
-        .blog-tag {
-            background-color: #f3f4f6;
-            color: #6B7280;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .blog-tag:hover {
-            background-color: #f26422;
-            color: white;
-        }
-        
-        .course-filter-section {
-            transition: all 0.3s ease;
-        }
-        
-        .course-filter-section.collapsed {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0;
-            margin: 0;
-            border: none;
-        }
-        
-        .course-filter-toggle {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .course-filter-toggle.collapsed .toggle-icon {
-            transform: rotate(180deg);
-        }
-        
-        .course-search {
-            position: relative;
-        }
-        
-        .course-search input {
-            padding-left: 40px;
-        }
-        
-        .course-search i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #9CA3AF;
-        }
-        
-        .course-grid-toggle, .course-list-toggle {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .course-grid-toggle.active, .course-list-toggle.active {
-            color: #f26422;
-        }
-        
-        .course-sort {
-            position: relative;
-        }
-        
-        .course-sort select {
-            padding-right: 30px;
-            appearance: none;
-        }
-        
-        .course-sort i {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #9CA3AF;
-            pointer-events: none;
-        }
-        
-        .course-pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 30px;
-        }
-        
-        .course-pagination-item {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .course-pagination-item:hover {
-            background-color: #f3f4f6;
-        }
-        
-        .course-pagination-item.active {
-            background-color: #f26422;
-            color: white;
-        }
-        
-        .course-pagination-prev, .course-pagination-next {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .course-pagination-prev:hover, .course-pagination-next:hover {
-            background-color: #f3f4f6;
-        }
-        
-        .course-pagination-prev.disabled, .course-pagination-next.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .course-list-view .course-card {
-            display: flex;
-            flex-direction: row;
-            height: auto;
-        }
-        
-        .course-list-view .course-card-img {
-            width: 300px;
-            height: 200px;
-        }
-        
-        .course-list-view .course-card-content {
-            flex: 1;
-            padding: 20px;
-        }
-        
-        .course-grid-view .course-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .course-grid-view .course-card-img {
-            width: 100%;
-            height: 200px;
-        }
-        
-        .course-grid-view .course-card-content {
-            flex: 1;
-            padding: 20px;
-        }
-        
-        .course-comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .course-comparison-table th, .course-comparison-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .course-comparison-table th {
-            background-color: #f8fafc;
-            font-weight: 600;
-        }
-        
-        .course-comparison-table tr:hover {
-            background-color: #f8fafc;
-        }
-        
-        .course-comparison-table .feature-check {
-            color: #10B981;
-        }
-        
-        .course-comparison-table .feature-cross {
-            color: #EF4444;
-        }
-        
-        .course-comparison-table .course-comparison-price {
-            font-weight: 600;
-            color: #f26422;
-        }
-        
-        .course-comparison-table .course-comparison-btn {
-            background: linear-gradient(90deg, #f26422, #fa7e32);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .course-comparison-table .course-comparison-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(242, 100, 34, 0.4);
+        /* Responsive styles for mobile */
+        @media (max-width: 768px) {
+            .hero-bg {
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+            }
+            
+            .ninja-path::after {
+                left: 20px;
+                transform: none;
+            }
+            
+            .path-point::before {
+                left: 20px;
+                transform: none;
+            }
+            
+            .playground-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr;
+                height: 600px;
+            }
+            
+            .playground-content {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr;
+                height: 600px;
+            }
+            
+            .playground-code {
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+            }
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Progress Bar -->
-    <div class="progress-bar" id="progressBar"></div>
-    
-    <!-- Creator Badge -->
-    <div class="creator-badge">
-        <i class="fas fa-code mr-2"></i> Created by Amit Chaudhari
-    </div>
-    
-    <!-- Chat Bubble -->
-    <div class="chat-bubble" id="chatBubble">
-        <i class="fas fa-comment-dots"></i>
-    </div>
-    
-    <!-- Chat Panel -->
-    <div class="chat-panel" id="chatPanel">
-        <div class="chat-header">
-            <div class="flex items-center">
-                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center mr-2">
-                    <i class="fas fa-robot text-orange-500"></i>
-                </div>
-                <div>
-                    <h3 class="font-semibold">Coding Assistant</h3>
-                    <div class="text-xs text-white text-opacity-80 live-indicator">Online</div>
-                </div>
-            </div>
-            <button id="closeChat" class="text-white hover:text-gray-200">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="chat-body" id="chatBody">
-            <div class="message bot-message">
-                <div class="message-content">
-                    Hi there! 👋 I'm your Coding Ninjas assistant. How can I help you today?
-                </div>
-            </div>
-        </div>
-        <div class="chat-footer">
-            <input type="text" class="chat-input" id="chatInput" placeholder="Type your message...">
-            <button class="chat-send" id="sendMessage">
-                <i class="fas fa-paper-plane"></i>
-            </button>
-        </div>
-    </div>
-
-    <!-- News Ticker -->
-    <div class="ticker-wrap bg-orange-50">
-        <div class="ticker">
-            <div class="ticker-item">🔥 New Course: Advanced React & Redux - Starting Next Week</div>
-            <div class="ticker-item">🎓 Congratulations to our 500+ students who got placed this month!</div>
-            <div class="ticker-item">💰 Limited Time Offer: Use code NINJA50 for 50% off on all courses</div>
-            <div class="ticker-item">🚀 Join our free webinar on "How to Crack FAANG Interviews" - Register Now</div>
-            <div class="ticker-item">📱 Download our mobile app for learning on the go</div>
-            <div class="ticker-item">🏆 Our student ranked #1 in Google Kickstart coding competition</div>
-            <div class="ticker-item">📊 New Data Science Bootcamp launching next month - Early bird registrations open</div>
-        </div>
-    </div>
-
     <!-- Navigation -->
-    <nav class="bg-white shadow-md fixed w-full z-10 mt-10">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center">
-                    <div class="text-2xl font-bold text-orange-500 flex items-center">
-                        <svg class="w-10 h-10 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#F26422"/>
-                            <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="#F26422" stroke-width="2"/>
-                        </svg>
-                        <span class="gradient-text">Coding Ninjas</span>
-                    </div>
-                    <div class="hidden lg:flex ml-10 space-x-1">
-                        <div class="mega-menu-trigger relative group">
-                            <a href="#" class="nav-link text-gray-700 hover:text-orange-500 font-medium px-4 py-2 flex items-center">
-                                Courses
-                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </a>
-                            <div class="mega-menu absolute left-0 mt-2 w-screen max-w-6xl bg-white shadow-xl rounded-lg p-6 grid grid-cols-4 gap-6">
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Programming Fundamentals</h3>
-                                    <ul class="space-y-2">
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-code mr-2 text-orange-500"></i> Introduction to Programming</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-laptop-code mr-2 text-orange-500"></i> C++ Foundation</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-java mr-2 text-orange-500"></i> Java Foundation</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-python mr-2 text-orange-500"></i> Python Foundation</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-database mr-2 text-orange-500"></i> SQL Fundamentals</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-js mr-2 text-orange-500"></i> JavaScript Essentials</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-terminal mr-2 text-orange-500"></i> Command Line & Git</a></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Web Development</h3>
-                                    <ul class="space-y-2">
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-html5 mr-2 text-orange-500"></i> Frontend Development</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-node-js mr-2 text-orange-500"></i> Backend Development</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-react mr-2 text-orange-500"></i> React.js</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-angular mr-2 text-orange-500"></i> Angular</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-vuejs mr-2 text-orange-500"></i> Vue.js</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-server mr-2 text-orange-500"></i> Full Stack Development</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-node mr-2 text-orange-500"></i> Node.js</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-database mr-2 text-orange-500"></i> MongoDB</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-aws mr-2 text-orange-500"></i> AWS for Web Developers</a></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Data & AI</h3>
-                                    <ul class="space-y-2">
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-brain mr-2 text-orange-500"></i> Machine Learning</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-robot mr-2 text-orange-500"></i> Artificial Intelligence</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-chart-bar mr-2 text-orange-500"></i> Data Science</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-database mr-2 text-orange-500"></i> Big Data</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-project-diagram mr-2 text-orange-500"></i> Deep Learning</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fab fa-python mr-2 text-orange-500"></i> Python for Data Science</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-table mr-2 text-orange-500"></i> Data Analysis with Pandas</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-chart-line mr-2 text-orange-500"></i> Data Visualization</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-cogs mr-2 text-orange-500"></i> Natural Language Processing</a></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Competitive Programming</h3>
-                                    <ul class="space-y-2">
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-code mr-2 text-orange-500"></i> Data Structures & Algorithms</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-trophy mr-2 text-orange-500"></i> Competitive Programming</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-laptop-code mr-2 text-orange-500"></i> Interview Preparation</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-puzzle-piece mr-2 text-orange-500"></i> Problem Solving</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-code-branch mr-2 text-orange-500"></i> Dynamic Programming</a></li>
-                                        <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-sitemap mr-2 text-orange-500"></i> Graph Algorithms</a></li>
-                                    </ul>
-                                    <div class="mt-6 bg-orange-50 p-3 rounded-lg">
-                                        <p class="text-sm text-orange-600 font-medium">New Course Alert! 🔥</p>
-                                        <p class="text-xs text-gray-600">Advanced DSA for FAANG Interviews</p>
-                                        <a href="#" class="text-xs text-orange-500 font-medium hover:underline">Learn more →</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#" class="nav-link text-gray-700 hover:text-orange-500 font-medium px-4 py-2">Practice</a>
-                        <div class="mega-menu-trigger relative group">
-                            <a href="#" class="nav-link text-gray-700 hover:text-orange-500 font-medium px-4 py-2 flex items-center">
-                                Events
-                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </a>
-                            <div class="mega-menu absolute left-0 mt-2 w-64 bg-white shadow-xl rounded-lg p-4">
-                                <ul class="space-y-2">
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-laptop mr-2 text-orange-500"></i> Webinars</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-chalkboard-teacher mr-2 text-orange-500"></i> Workshops</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-trophy mr-2 text-orange-500"></i> Coding Contests</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-users mr-2 text-orange-500"></i> Bootcamps</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-calendar-alt mr-2 text-orange-500"></i> Upcoming Events</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-graduation-cap mr-2 text-orange-500"></i> Career Fairs</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-handshake mr-2 text-orange-500"></i> Industry Connect</a></li>
-                                </ul>
-                                <div class="mt-4 bg-orange-50 p-3 rounded-lg">
-                                    <div class="text-sm text-orange-600 font-medium flex items-center">
-                                        <span class="live-indicator pl-0 pr-2">Live Now</span> Coding Contest
-                                    </div>
-                                    <a href="#" class="text-xs text-orange-500 font-medium hover:underline">Join now →</a>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#" class="nav-link text-gray-700 hover:text-orange-500 font-medium px-4 py-2">Campus</a>
-                        <a href="#" class="nav-link text-gray-700 hover:text-orange-500 font-medium px-4 py-2">Blog</a>
-                        <div class="mega-menu-trigger relative group">
-                            <a href="#" class="nav-link text-gray-700 hover:text-orange-500 font-medium px-4 py-2 flex items-center">
-                                More
-                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </a>
-                            <div class="mega-menu absolute right-0 mt-2 w-64 bg-white shadow-xl rounded-lg p-4">
-                                <ul class="space-y-2">
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-briefcase mr-2 text-orange-500"></i> Career Camp</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-user-tie mr-2 text-orange-500"></i> Hire From Us</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-question-circle mr-2 text-orange-500"></i> FAQs</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-headset mr-2 text-orange-500"></i> Support</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-info-circle mr-2 text-orange-500"></i> About Us</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-users mr-2 text-orange-500"></i> Our Team</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-building mr-2 text-orange-500"></i> Corporate Training</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 flex items-center"><i class="fas fa-hands-helping mr-2 text-orange-500"></i> Become an Instructor</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hidden lg:flex items-center space-x-4">
-                    <div class="relative">
-                        <button id="notificationBtn" class="text-gray-700 hover:text-orange-500 relative">
-                            <i class="fas fa-bell text-xl"></i>
-                            <span class="notification-dot"></span>
-                        </button>
-                        <!-- Notification Panel -->
-                        <div class="notification-panel" id="notificationPanel">
-                            <div class="notification-header">
-                                <h3 class="font-semibold">Notifications</h3>
-                                <button id="closeNotifications" class="text-white hover:text-gray-200">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                            <div class="notification-body">
-                                <div class="notification-item unread">
-                                    <h4 class="font-medium text-gray-800">New Course Available</h4>
-                                    <p class="text-sm text-gray-600">Advanced React & Redux course is now available.</p>
-                                    <p class="notification-time mt-1">2 hours ago</p>
-                                </div>
-                                <div class="notification-item unread">
-                                    <h4 class="font-medium text-gray-800">Upcoming Webinar</h4>
-                                    <p class="text-sm text-gray-600">Join our free webinar on "How to Crack FAANG Interviews".</p>
-                                    <p class="notification-time mt-1">5 hours ago</p>
-                                </div>
-                                <div class="notification-item">
-                                    <h4 class="font-medium text-gray-800">Assignment Reminder</h4>
-                                    <p class="text-sm text-gray-600">Your DSA assignment is due tomorrow.</p>
-                                    <p class="notification-time mt-1">Yesterday</p>
-                                </div>
-                                <div class="notification-item">
-                                    <h4 class="font-medium text-gray-800">New Blog Post</h4>
-                                    <p class="text-sm text-gray-600">Check out our latest blog on "Top 10 DSA Questions".</p>
-                                    <p class="notification-time mt-1">2 days ago</p>
-                                </div>
-                                <div class="notification-item">
-                                    <h4 class="font-medium text-gray-800">Course Completion</h4>
-                                    <p class="text-sm text-gray-600">Congratulations! You've completed the Python Foundation course.</p>
-                                    <p class="notification-time mt-1">3 days ago</p>
-                                </div>
-                                <div class="notification-item">
-                                    <h4 class="font-medium text-gray-800">New Job Opportunity</h4>
-                                    <p class="text-sm text-gray-600">Google is hiring! Check out the job posting in our career portal.</p>
-                                    <p class="notification-time mt-1">4 days ago</p>
-                                </div>
-                            </div>
-                            <div class="notification-footer">
-                                <a href="#" class="text-orange-500 hover:text-orange-600 font-medium text-sm">View All Notifications</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="theme-switch-wrapper flex items-center">
-                        <span class="mr-2 text-sm text-gray-700"><i class="fas fa-sun"></i></span>
-                        <label class="theme-switch">
-                            <input type="checkbox" id="themeToggle">
-                            <span class="slider"></span>
-                        </label>
-                        <span class="ml-2 text-sm text-gray-700"><i class="fas fa-moon"></i></span>
-                    </div>
-                    <a href="#" class="text-gray-700 hover:text-orange-500 font-medium">Login</a>
-                    <a href="#" class="btn-primary text-white px-6 py-2 rounded-md hover:bg-orange-600">Sign Up</a>
-                </div>
-                <div class="lg:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    <nav id="navbar" class="fixed w-full bg-white shadow-md z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <svg class="w-8 h-8 text-violet-700" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12,2L1,12h3v9h6v-6h4v6h6v-9h3L12,2z M12,4.7l6,5.3h-1v9h-2v-6H9v6H7v-9H6L12,4.7z"></path>
+                </svg>
+                <span class="text-xl font-bold text-gray-800">Coding<span class="text-violet-700">Ninja</span></span>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-gray-700 hover:text-violet-700 font-medium active-nav">Home</a>
+                <a href="#courses" class="nav-link text-gray-700 hover:text-violet-700 font-medium">Courses</a>
+                <a href="#roadmap" class="nav-link text-gray-700 hover:text-violet-700 font-medium">Roadmap</a>
+                <a href="#skills" class="nav-link text-gray-700 hover:text-violet-700 font-medium">Skills</a>
+                <a href="#playground" class="nav-link text-gray-700 hover:text-violet-700 font-medium">Playground</a>
+                <a href="#community" class="nav-link text-gray-700 hover:text-violet-700 font-medium">Community</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button id="notification-button" class="text-gray-700 hover:text-violet-700 relative">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                    </svg>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">3</span>
+                </button>
+                <button id="search-button" class="text-gray-700 hover:text-violet-700">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </button>
+                <button class="hidden md:block px-5 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 transition-colors">Sign Up</button>
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="py-2 text-gray-700 hover:text-violet-700 font-medium">Home</a>
+                <a href="#courses" class="py-2 text-gray-700 hover:text-violet-700 font-medium">Courses</a>
+                <a href="#roadmap" class="py-2 text-gray-700 hover:text-violet-700 font-medium">Roadmap</a>
+                <a href="#skills" class="py-2 text-gray-700 hover:text-violet-700 font-medium">Skills</a>
+                <a href="#playground" class="py-2 text-gray-700 hover:text-violet-700 font-medium">Playground</a>
+                <a href="#community" class="py-2 text-gray-700 hover:text-violet-700 font-medium">Community</a>
+                <button class="w-full px-5 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 transition-colors">Sign Up</button>
+            </div>
+        </div>
+        
+        <!-- Search Overlay -->
+        <div id="search-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold">Search Courses & Resources</h3>
+                    <button id="close-search" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
                 </div>
-            </div>
-            <div id="mobile-menu" class="lg:hidden hidden pt-4 pb-2 animate__animated animate__fadeIn">
-                <a href="#" class="block py-2 text-gray-700 hover:text-orange-500">Courses</a>
-                <a href="#" class="block py-2 text-gray-700 hover:text-orange-500">Practice</a>
-                <a href="#" class="block py-2 text-gray-700 hover:text-orange-500">Events</a>
-                <a href="#" class="block py-2 text-gray-700 hover:text-orange-500">Campus</a>
-                <a href="#" class="block py-2 text-gray-700 hover:text-orange-500">Blog</a>
-                <div class="pt-4 flex flex-col space-y-2">
-                    <a href="#" class="text-center text-gray-700 hover:text-orange-500 py-2 border border-gray-300 rounded-md">Login</a>
-                    <a href="#" class="text-center btn-primary text-white py-2 rounded-md hover:bg-orange-600">Sign Up</a>
+                <div class="relative">
+                    <input type="text" placeholder="Search for courses, tutorials, or topics..." class="w-full p-4 border border-gray-300 rounded-lg pl-12 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent">
+                    <svg class="w-6 h-6 text-gray-400 absolute left-3 top-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+                <div class="mt-4">
+                    <h4 class="text-sm font-semibold text-gray-500 mb-2">POPULAR SEARCHES</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 cursor-pointer">JavaScript</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 cursor-pointer">React</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 cursor-pointer">Python</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 cursor-pointer">Machine Learning</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 cursor-pointer">Web Development</span>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-36 pb-24 px-4 relative overflow-hidden">
-        <!-- Background Blobs -->
-        <div class="blob bg-orange-200" style="width: 300px; height: 300px; top: 10%; left: 5%;"></div>
-        <div class="blob bg-blue-200" style="width: 250px; height: 250px; top: 40%; right: 10%;"></div>
-        
-        <div class="container mx-auto relative">
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-4 py-16">
             <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0 animate__animated animate__fadeInLeft">
-                    <div class="inline-flex items-center bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                        <div class="pulse w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
-                        <span>Limited Time Offer: 50% OFF on all courses</span>
-                        <div class="ml-2 countdown-timer">
-                            <div class="countdown-box">
-                                <div class="countdown-value" id="days">02</div>
-                                <div class="countdown-label">Days</div>
-                            </div>
-                            <div class="countdown-box">
-                                <div class="countdown-value" id="hours">18</div>
-                                <div class="countdown-label">Hours</div>
-                            </div>
-                            <div class="countdown-box">
-                                <div class="countdown-value" id="minutes">45</div>
-                                <div class="countdown-label">Mins</div>
-                            </div>
-                        </div>
-                    </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-                        Accelerate Your <span class="gradient-text typing-animation">Coding Career</span> With Expert Skills
+                <div class="md:w-1/2 text-white mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                        Become a <span class="text-emerald-400">Coding Ninja</span> in Record Time
                     </h1>
-                    <p class="text-lg text-gray-600 mb-8">Learn from industry experts and get placed in top companies. Join thousands of students who've transformed their careers with us.</p>
+                    <p class="text-lg md:text-xl mb-8 text-gray-100">
+                        Master advanced programming skills with our cutting-edge curriculum and expert mentorship. Join thousands of successful developers who started their journey with us.
+                    </p>
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#" class="btn-primary text-white px-8 py-3 rounded-md text-center font-medium flex items-center justify-center">
-                            <span>Explore Courses</span>
-                            <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                        <a href="#" class="btn-outline border-2 border-orange-500 text-orange-500 px-8 py-3 rounded-md text-center font-medium hover:bg-orange-50 flex items-center justify-center">
-                            <i class="fas fa-play-circle mr-2"></i>
-                            <span>Try For Free</span>
-                        </a>
+                        <button class="px-8 py-3 bg-emerald-500 text-white rounded-md hover:bg-emerald-600 transition-colors font-medium">
+                            Start Learning Now
+                        </button>
+                        <button class="px-8 py-3 bg-transparent border-2 border-white text-white rounded-md hover:bg-white hover:text-violet-700 transition-colors font-medium">
+                            View Courses
+                        </button>
                     </div>
-                    <div class="mt-10 flex items-center">
-                        <div class="flex -space-x-3">
-                            <img class="w-10 h-10 rounded-full border-2 border-white" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23F3F4F6'/%3E%3Cpath d='M20 24C23.3137 24 26 21.3137 26 18C26 14.6863 23.3137 12 20 12C16.6863 12 14 14.6863 14 18C14 21.3137 16.6863 24 20 24Z' fill='%23D1D5DB'/%3E%3Cpath d='M12 30C12 26.6863 15.5817 24 20 24C24.4183 24 28 26.6863 28 30' stroke='%23D1D5DB' stroke-width='2'/%3E%3C/svg%3E" alt="User">
-                            <img class="w-10 h-10 rounded-full border-2 border-white" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23F3F4F6'/%3E%3Cpath d='M20 24C23.3137 24 26 21.3137 26 18C26 14.6863 23.3137 12 20 12C16.6863 12 14 14.6863 14 18C14 21.3137 16.6863 24 20 24Z' fill='%23D1D5DB'/%3E%3Cpath d='M12 30C12 26.6863 15.5817 24 20 24C24.4183 24 28 26.6863 28 30' stroke='%23D1D5DB' stroke-width='2'/%3E%3C/svg%3E" alt="User">
-                            <img class="w-10 h-10 rounded-full border-2 border-white" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23F3F4F6'/%3E%3Cpath d='M20 24C23.3137 24 26 21.3137 26 18C26 14.6863 23.3137 12 20 12C16.6863 12 14 14.6863 14 18C14 21.3137 16.6863 24 20 24Z' fill='%23D1D5DB'/%3E%3Cpath d='M12 30C12 26.6863 15.5817 24 20 24C24.4183 24 28 26.6863 28 30' stroke='%23D1D5DB' stroke-width='2'/%3E%3C/svg%3E" alt="User">
-                            <div class="w-10 h-10 rounded-full border-2 border-white bg-orange-100 flex items-center justify-center text-orange-500 font-bold text-xs">+45K</div>
+                    
+                    <div class="mt-10 flex items-center space-x-6">
+                        <div class="flex -space-x-2">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23FF5733'/%3E%3Ctext x='50' y='60' font-size='30' text-anchor='middle' fill='white'%3EA%3C/text%3E%3C/svg%3E" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%2333A1FF'/%3E%3Ctext x='50' y='60' font-size='30' text-anchor='middle' fill='white'%3EB%3C/text%3E%3C/svg%3E" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%2333FF57'/%3E%3Ctext x='50' y='60' font-size='30' text-anchor='middle' fill='white'%3EC%3C/text%3E%3C/svg%3E" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-white" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23FFD133'/%3E%3Ctext x='50' y='60' font-size='30' text-anchor='middle' fill='white'%3ED%3C/text%3E%3C/svg%3E" alt="User">
                         </div>
-                        <div class="ml-4">
-                            <p class="text-sm text-gray-600">Joined by <span class="font-semibold">50,000+</span> students</p>
-                            <div class="flex items-center mt-1">
+                        <div>
+                            <div class="flex items-center">
                                 <div class="flex">
-                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
                                 </div>
-                                <p class="ml-1 text-sm text-gray-600">4.8/5 (2000+ reviews)</p>
+                                <span class="ml-2 text-white">4.9/5 from 2,500+ reviews</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="md:w-1/2 md:pl-10 animate__animated animate__fadeInRight">
-                    <div class="relative">
-                        <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-gray-100">
-                            <div class="absolute -top-3 -right-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium badge-bounce">
-                                <i class="fas fa-bolt mr-1"></i> Limited Time Offer
-                            </div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-6">Start your coding journey today</h3>
-                            <form>
-                                <div class="mb-4">
-                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="name">Full Name</label>
-                                    <div class="relative">
-                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                            <i class="fas fa-user text-gray-400"></i>
-                                        </div>
-                                        <input class="w-full pl-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" type="text" id="name" placeholder="Enter your name">
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="email">Email</label>
-                                    <div class="relative">
-                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                            <i class="fas fa-envelope text-gray-400"></i>
-                                        </div>
-                                        <input class="w-full pl-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" type="email" id="email" placeholder="Enter your email">
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="phone">Phone Number</label>
-                                    <div class="relative">
-                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                            <i class="fas fa-phone text-gray-400"></i>
-                                        </div>
-                                        <input class="w-full pl-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" type="tel" id="phone" placeholder="Enter your phone number">
-                                    </div>
-                                </div>
-                                <div class="mb-6">
-                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="course">Interested In</label>
-                                    <div class="relative">
-                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                            <i class="fas fa-laptop-code text-gray-400"></i>
-                                        </div>
-                                        <select class="w-full pl-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 appearance-none" id="course">
-                                            <option value="">Select a course</option>
-                                            <option value="web">Web Development</option>
-                                            <option value="data">Data Structures & Algorithms</option>
-                                            <option value="ml">Machine Learning</option>
-                                            <option value="android">Android Development</option>
-                                            <option value="ios">iOS Development</option>
-                                            <option value="devops">DevOps</option>
-                                            <option value="blockchain">Blockchain</option>
-                                            <option value="cloud">Cloud Computing</option>
-                                            <option value="cyber">Cybersecurity</option>
-                                            <option value="ui">UI/UX Design</option>
-                                            <option value="game">Game Development</option>
-                                        </select>
-                                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                                            <i class="fas fa-chevron-down text-gray-400"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="submit" class="w-full btn-primary text-white py-3 rounded-md font-medium hover:opacity-90 transition flex items-center justify-center">
-                                    <span>Get Started</span>
-                                    <i class="fas fa-arrow-right ml-2"></i>
-                                </button>
-                            </form>
-                            <div class="mt-4 text-center text-xs text-gray-500">
-                                <i class="fas fa-lock mr-1"></i> Your information is secure and will not be shared
-                            </div>
+                
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="terminal w-full max-w-lg">
+                        <div class="terminal-header">
+                            <div class="terminal-button terminal-red"></div>
+                            <div class="terminal-button terminal-yellow"></div>
+                            <div class="terminal-button terminal-green"></div>
                         </div>
-                        
-                        <!-- Code Editor Animation -->
-                        <div class="absolute -bottom-16 -left-16 w-32 h-32 rotate-slow hidden md:block">
-                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <path fill="#F26422" d="M41.3,-59.1C53.9,-51.1,64.6,-39.6,70.2,-25.9C75.8,-12.3,76.4,3.6,72.1,17.9C67.8,32.2,58.6,45,46.3,53.2C34,61.4,18.7,65.1,3.2,62.1C-12.2,59.1,-27.7,49.5,-39.9,38.1C-52.1,26.7,-61,13.3,-64.1,-1.8C-67.2,-16.9,-64.5,-33.9,-55.3,-43.5C-46.1,-53.1,-30.5,-55.4,-16.5,-62.2C-2.5,-69,11.5,-80.3,24.5,-77.7C37.5,-75.1,49.5,-58.6,41.3,-59.1Z" transform="translate(100 100)" />
-                            </svg>
-                        </div>
-                        
-                        <div class="absolute -top-10 -right-10 code-editor w-64 shadow-lg hidden md:block">
-                            <div class="code-editor-header">
-                                <div class="flex space-x-2">
-                                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                                </div>
-                                <div class="text-xs">main.js</div>
+                        <div class="code-font text-emerald-400 text-sm md:text-base">
+                            <div class="mb-2">
+                                <span class="text-violet-400">class</span> <span class="text-yellow-300">CodingNinja</span> {
                             </div>
-                            <div class="code-editor-body text-xs">
-                                <div class="code-line">
-                                    <span class="line-number">1</span>
-                                    <span class="keyword">function</span> <span class="function">learnToCode</span>() {
-                                </div>
-                                <div class="code-line">
-                                    <span class="line-number">2</span>
-                                    &nbsp;&nbsp;<span class="keyword">const</span> <span class="variable">skills</span> = [<span class="string">'HTML'</span>, <span class="string">'CSS'</span>, <span class="string">'JS'</span>];
-                                </div>
-                                <div class="code-line">
-                                    <span class="line-number">3</span>
-                                    &nbsp;&nbsp;<span class="keyword">return</span> <span class="string">'Success!'</span>;
-                                </div>
-                                <div class="code-line">
-                                    <span class="line-number">4</span>
-                                    }
-                                </div>
-                                <div class="code-line">
-                                    <span class="line-number">5</span>
-                                    <span class="comment">// Start your journey</span>
-                                </div>
-                                <div class="code-line">
-                                    <span class="line-number">6</span>
-                                    <span class="function">learnToCode</span>();<span class="cursor"></span>
-                                </div>
+                            <div class="mb-2 ml-4">
+                                <span class="text-violet-400">constructor</span>() {
+                            </div>
+                            <div class="mb-2 ml-8">
+                                <span class="text-gray-400">// Initialize ninja skills</span>
+                            </div>
+                            <div class="mb-2 ml-8">
+                                <span class="text-blue-400">this</span>.<span class="text-green-300">skills</span> = [<span class="text-orange-300">'JavaScript'</span>, <span class="text-orange-300">'Python'</span>, <span class="text-orange-300">'React'</span>, <span class="text-orange-300">'Node.js'</span>];
+                            </div>
+                            <div class="mb-2 ml-8">
+                                <span class="text-blue-400">this</span>.<span class="text-green-300">level</span> = <span class="text-orange-300">'Beginner'</span>;
+                            </div>
+                            <div class="mb-2 ml-4">
+                                }
+                            </div>
+                            <div class="mb-2 ml-4">
+                                <span class="text-violet-400">async</span> <span class="text-yellow-300">trainHard</span>() {
+                            </div>
+                            <div class="mb-2 ml-8">
+                                <span class="text-gray-400">// Level up through consistent practice</span>
+                            </div>
+                            <div class="mb-2 ml-8">
+                                <span class="text-violet-400">await</span> <span class="text-yellow-300">practice</span>(<span class="text-orange-300">'daily'</span>);
+                            </div>
+                            <div class="mb-2 ml-8">
+                                <span class="text-blue-400">this</span>.<span class="text-green-300">level</span> = <span class="text-orange-300">'Advanced'</span>;
+                            </div>
+                            <div class="mb-2 ml-8">
+                                <span class="text-violet-400">return</span> <span class="text-orange-300">'Transformation Complete!'</span>;
+                            </div>
+                            <div class="mb-2 ml-4">
+                                }
+                            </div>
+                            <div class="mb-2">
+                                }
+                            </div>
+                            <div class="mb-2">
+                                <span class="text-violet-400">const</span> <span class="text-blue-400">you</span> = <span class="text-violet-400">new</span> <span class="text-yellow-300">CodingNinja</span>();
+                            </div>
+                            <div class="typing">
+                                <span class="text-blue-400">you</span>.<span class="text-yellow-300">trainHard</span>().<span class="text-yellow-300">then</span>(result => <span class="text-yellow-300">console</span>.<span class="text-yellow-300">log</span>(result));
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <div class="flex flex-col items-center">
-                <span class="text-sm text-gray-500 mb-2">Scroll to explore</span>
-                <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
-            </div>
-        </div>
-        
-        <!-- Shape Divider -->
-        <div class="custom-shape-divider">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-            </svg>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="py-12 bg-white">
+    <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="p-4">
-                    <div class="text-3xl md:text-4xl font-bold text-orange-500 mb-2 stats-counter" data-target="50000">0</div>
-                    <p class="text-gray-600">Students Enrolled</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-violet-700 mb-2" id="students-count">0</div>
+                    <div class="text-gray-600">Students Enrolled</div>
                 </div>
-                <div class="p-4">
-                    <div class="text-3xl md:text-4xl font-bold text-orange-500 mb-2 stats-counter" data-target="1200">0</div>
-                    <p class="text-gray-600">Successful Placements</p>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-violet-700 mb-2" id="courses-count">0</div>
+                    <div class="text-gray-600">Courses Available</div>
                 </div>
-                <div class="p-4">
-                    <div class="text-3xl md:text-4xl font-bold text-orange-500 mb-2 stats-counter" data-target="150">0</div>
-                    <p class="text-gray-600">Courses Available</p>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-violet-700 mb-2" id="instructors-count">0</div>
+                    <div class="text-gray-600">Expert Instructors</div>
                 </div>
-                <div class="p-4">
-                    <div class="text-3xl md:text-4xl font-bold text-orange-500 mb-2 stats-counter" data-target="100">0</div>
-                    <p class="text-gray-600">Industry Partners</p>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-violet-700 mb-2" id="success-rate">0</div>
+                    <div class="text-gray-600">Success Rate</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Course Categories Section -->
-    <section class="py-16 bg-gray-50 px-4">
-        <div class="container mx-auto">
-            <div class="text-center mb-12">
-                <span class="inline-block bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                    <i class="fas fa-th-large mr-2"></i>COURSE CATEGORIES
-                </span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Browse Our Top Categories</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Explore our wide range of courses across different domains to find the perfect match for your career goals.</p>
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose <span class="text-violet-700">Coding Ninja</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our platform combines cutting-edge technology with expert instruction to provide the most effective learning experience.</p>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                <!-- Category 1 -->
-                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="category-icon bg-blue-100 mx-auto">
-                        <i class="fas fa-laptop-code text-blue-600 text-2xl"></i>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover">
+                    <div class="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
                     </div>
-                    <h3 class="font-semibold text-gray-800 mb-2">Web Development</h3>
-                    <p class="text-sm text-gray-600 mb-3">35 Courses</p>
-                    <a href="#" class="text-orange-500 text-sm font-medium hover:underline">Explore <i class="fas fa-arrow-right ml-1"></i></a>
+                    <h3 class="text-xl font-bold mb-3">Interactive Learning</h3>
+                    <p class="text-gray-600 mb-4">Learn by doing with our hands-on coding exercises, real-time feedback, and interactive challenges.</p>
+                    <a href="#" class="text-violet-600 hover:text-violet-700 font-medium inline-flex items-center">
+                        Learn more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
                 </div>
                 
-                <!-- Category 2 -->
-                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="category-icon bg-purple-100 mx-auto">
-                        <i class="fas fa-mobile-alt text-purple-600 text-2xl"></i>
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
                     </div>
-                    <h3 class="font-semibold text-gray-800 mb-2">App Development</h3>
-                    <p class="text-sm text-gray-600 mb-3">28 Courses</p>
-                    <a href="#" class="text-orange-500 text-sm font-medium hover:underline">Explore <i class="fas fa-arrow-right ml-1"></i></a>
+                    <h3 class="text-xl font-bold mb-3">Expert Mentorship</h3>
+                    <p class="text-gray-600 mb-4">Get personalized guidance from industry professionals with years of experience in top tech companies.</p>
+                    <a href="#" class="text-violet-600 hover:text-violet-700 font-medium inline-flex items-center">
+                        Meet our mentors
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
                 </div>
                 
-                <!-- Category 3 -->
-                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="category-icon bg-green-100 mx-auto">
-                        <i class="fas fa-code text-green-600 text-2xl"></i>
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
                     </div>
-                    <h3 class="font-semibold text-gray-800 mb-2">DSA</h3>
-                    <p class="text-sm text-gray-600 mb-3">42 Courses</p>
-                    <a href="#" class="text-orange-500 text-sm font-medium hover:underline">Explore <i class="fas fa-arrow-right ml-1"></i></a>
+                    <h3 class="text-xl font-bold mb-3">Project-Based Learning</h3>
+                    <p class="text-gray-600 mb-4">Build real-world projects that you can showcase in your portfolio and impress potential employers.</p>
+                    <a href="#" class="text-violet-600 hover:text-violet-700 font-medium inline-flex items-center">
+                        View projects
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
                 </div>
-                
-                <!-- Category 4 -->
-                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="category-icon bg-yellow-100 mx-auto">
-                        <i class="fas fa-brain text-yellow-600 text-2xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-800 mb-2">Machine Learning</h3>
-                    <p class="text-sm text-gray-600 mb-3">18 Courses</p>
-                    <a href="#" class="text-orange-500 text-sm font-medium hover:underline">Explore <i class="fas fa-arrow-right ml-1"></i></a>
-                </div>
-                
-                <!-- Category 5 -->
-                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="category-icon bg-red-100 mx-auto">
-                        <i class="fas fa-database text-red-600 text-2xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-800 mb-2">Database</h3>
-                    <p class="text-sm text-gray-600 mb-3">15 Courses</p>
-                    <a href="#" class="text-orange-500 text-sm font-medium hover:underline">Explore <i class="fas fa-arrow-right ml-1"></i></a>
-                </div>
-                
-                <!-- Category 6 -->
-                <div class="category-card bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="category-icon bg-indigo-100 mx-auto">
-                        <i class="fas fa-cloud text-indigo-600 text-2xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-800 mb-2">Cloud Computing</h3>
-                    <p class="text-sm text-gray-600 mb-3">12 Courses</p>
-                    <a href="#" class="text-orange-500 text-sm font-medium hover:underline">Explore <i class="fas fa-arrow-right ml-1"></i></a>
-                </div>
-            </div>
-            
-            <div class="mt-12 text-center">
-                <a href="#" class="btn-outline border-2 border-orange-500 text-orange-500 px-8 py-3 rounded-md inline-block font-medium hover:bg-orange-50">
-                    View All Categories
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Popular Courses Section -->
-    <section class="py-16 bg-white px-4">
-        <div class="container mx-auto">
-            <div class="text-center mb-12">
-                <span class="inline-block bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                    <i class="fas fa-star mr-2"></i>POPULAR COURSES
-                </span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Most Popular Courses</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Join thousands of students who have already taken these courses and transformed their careers.</p>
+    <!-- Courses Section -->
+    <section id="courses" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Advanced Coding <span class="text-violet-700">Courses</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore our comprehensive curriculum designed to transform beginners into professional developers through hands-on projects and expert guidance.</p>
             </div>
             
-            <div class="flex flex-wrap justify-center mb-8">
-                <button class="filter-btn px-4 py-2 m-1 rounded-md filter-active">All Courses</button>
-                <button class="filter-btn px-4 py-2 m-1 rounded-md bg-gray-100 hover:bg-gray-200">Web Development</button>
-                <button class="filter-btn px-4 py-2 m-1 rounded-md bg-gray-100 hover:bg-gray-200">Data Structures</button>
-                <button class="filter-btn px-4 py-2 m-1 rounded-md bg-gray-100 hover:bg-gray-200">Machine Learning</button>
-                <button class="filter-btn px-4 py-2 m-1 rounded-md bg-gray-100 hover:bg-gray-200">Mobile Development</button>
-                <button class="filter-btn px-4 py-2 m-1 rounded-md bg-gray-100 hover:bg-gray-200">Cloud Computing</button>
+            <!-- Course Filters -->
+            <div class="filter-container mb-8 flex justify-center">
+                <div class="filter-tag active" data-filter="all">All Courses</div>
+                <div class="filter-tag" data-filter="frontend">Frontend</div>
+                <div class="filter-tag" data-filter="backend">Backend</div>
+                <div class="filter-tag" data-filter="mobile">Mobile</div>
+                <div class="filter-tag" data-filter="data">Data Science</div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Course 1 -->
-                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover course-card" data-category="frontend">
                     <div class="relative">
-                        <img src="https://via.placeholder.com/600x400/4F46E5/FFFFFF?text=Web+Development" alt="Web Development" class="w-full h-48 object-cover">
-                        <div class="bestseller-tag">Bestseller</div>
-                        <div class="course-level">Beginner</div>
-                        <div class="instructor-badge flex items-center">
-                            <i class="fas fa-user-tie mr-2"></i> John Smith
+                        <div class="h-48 bg-gradient-to-r from-blue-500 to-violet-600 flex items-center justify-center">
+                            <svg class="w-24 h-24 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
                         </div>
+                        <div class="absolute top-4 right-4 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">BESTSELLER</div>
                     </div>
                     <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <div class="rating-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span class="text-gray-600 ml-1">4.8 (2.5k)</span>
+                        <div class="flex items-center mb-2">
+                            <div class="flex">
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
                             </div>
-                            <div class="text-orange-500 font-bold">$49.99</div>
+                            <span class="ml-2 text-gray-600 text-sm">4.9 (2,150 reviews)</span>
                         </div>
-                        <h3 class="font-bold text-xl mb-2 text-gray-800">Complete Web Development Bootcamp</h3>
-                        <p class="text-gray-600 text-sm mb-4">Learn HTML, CSS, JavaScript, React, Node.js and more to become a full-stack web developer.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">HTML</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">CSS</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">React</span>
-                        </div>
-                        <div class="flex justify-between text-sm mb-4">
-                            <div class="course-duration flex items-center">
-                                <i class="far fa-clock mr-1"></i> 42 hours
+                        <h3 class="text-xl font-bold mb-2">Full-Stack JavaScript Mastery</h3>
+                        <p class="text-gray-600 mb-4">Master modern JavaScript from fundamentals to advanced concepts. Build full-stack applications with React, Node.js, and MongoDB.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-gray-600 text-sm">12 weeks</span>
                             </div>
-                            <div class="course-lectures flex items-center">
-                                <i class="far fa-play-circle mr-1"></i> 150 lectures
-                            </div>
-                            <div class="course-students flex items-center">
-                                <i class="fas fa-user-graduate mr-1"></i> 10.5k students
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-gray-600 text-sm">Certificate</span>
                             </div>
                         </div>
-                        <div class="course-progress mb-4">
-                            <div class="course-progress-bar" style="width: 75%"></div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-violet-700">$499</span>
+                            <button class="px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 transition-colors">Enroll Now</button>
                         </div>
-                        <a href="#" class="btn-primary text-white py-2 px-4 rounded-md w-full block text-center font-medium">Enroll Now</a>
                     </div>
                 </div>
                 
                 <!-- Course 2 -->
-                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover course-card" data-category="data">
                     <div class="relative">
-                        <img src="https://via.placeholder.com/600x400/10B981/FFFFFF?text=Data+Structures" alt="Data Structures" class="w-full h-48 object-cover">
-                        <div class="trending-tag">Trending</div>
-                        <div class="course-level">Intermediate</div>
-                        <div class="instructor-badge flex items-center">
-                            <i class="fas fa-user-tie mr-2"></i> Sarah Johnson
+                        <div class="h-48 bg-gradient-to-r from-emerald-500 to-teal-600 flex items-center justify-center">
+                            <svg class="w-24 h-24 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                            </svg>
                         </div>
+                        <div class="absolute top-4 right-4 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">NEW</div>
                     </div>
                     <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <div class="rating-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="text-gray-600 ml-1">5.0 (1.8k)</span>
+                        <div class="flex items-center mb-2">
+                            <div class="flex">
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
                             </div>
-                            <div class="text-orange-500 font-bold">$59.99</div>
+                            <span class="ml-2 text-gray-600 text-sm">4.8 (1,850 reviews)</span>
                         </div>
-                        <h3 class="font-bold text-xl mb-2 text-gray-800">Master Data Structures & Algorithms</h3>
-                        <p class="text-gray-600 text-sm mb-4">Learn all the important data structures and algorithms needed to ace technical interviews.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Arrays</span>
-                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Linked Lists</span>
-                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Trees</span>
-                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Graphs</span>
-                        </div>
-                        <div class="flex justify-between text-sm mb-4">
-                            <div class="course-duration flex items-center">
-                                <i class="far fa-clock mr-1"></i> 38 hours
+                        <h3 class="text-xl font-bold mb-2">Python & Machine Learning</h3>
+                        <p class="text-gray-600 mb-4">Learn Python programming and dive into machine learning algorithms. Build AI models and data analysis projects from scratch.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-gray-600 text-sm">10 weeks</span>
                             </div>
-                            <div class="course-lectures flex items-center">
-                                <i class="far fa-play-circle mr-1"></i> 120 lectures
-                            </div>
-                            <div class="course-students flex items-center">
-                                <i class="fas fa-user-graduate mr-1"></i> 8.2k students
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-gray-600 text-sm">Certificate</span>
                             </div>
                         </div>
-                        <div class="course-progress mb-4">
-                            <div class="course-progress-bar" style="width: 60%"></div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-violet-700">$599</span>
+                            <button class="px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 transition-colors">Enroll Now</button>
                         </div>
-                        <a href="#" class="btn-primary text-white py-2 px-4 rounded-md w-full block text-center font-medium">Enroll Now</a>
                     </div>
                 </div>
                 
                 <!-- Course 3 -->
-                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover course-card" data-category="mobile">
                     <div class="relative">
-                        <img src="https://via.placeholder.com/600x400/F59E0B/FFFFFF?text=Machine+Learning" alt="Machine Learning" class="w-full h-48 object-cover">
-                        <div class="new-tag">New</div>
-                        <div class="course-level">Advanced</div>
-                        <div class="instructor-badge flex items-center">
-                            <i class="fas fa-user-tie mr-2"></i> Michael Chen
+                        <div class="h-48 bg-gradient-to-r from-orange-500 to-red-600 flex items-center justify-center">
+                            <svg class="w-24 h-24 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                            </svg>
                         </div>
+                        <div class="absolute top-4 right-4 bg-violet-500 text-white text-xs font-bold px-3 py-1 rounded-full">POPULAR</div>
                     </div>
                     <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <div class="rating-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span class="text-gray-600 ml-1">4.0 (950)</span>
+                        <div class="flex items-center mb-2">
+                            <div class="flex">
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
                             </div>
-                            <div class="text-orange-500 font-bold">$69.99</div>
+                            <span class="ml-2 text-gray-600 text-sm">4.7 (1,320 reviews)</span>
                         </div>
-                        <h3 class="font-bold text-xl mb-2 text-gray-800">Machine Learning A-Z: Hands-On Python</h3>
-                        <p class="text-gray-600 text-sm mb-4">Learn to create Machine Learning Algorithms in Python. Prepare for a career in Data Science.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Python</span>
-                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">TensorFlow</span>
-                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Neural Networks</span>
-                        </div>
-                        <div class="flex justify-between text-sm mb-4">
-                            <div class="course-duration flex items-center">
-                                <i class="far fa-clock mr-1"></i> 45 hours
+                        <h3 class="text-xl font-bold mb-2">Mobile App Development</h3>
+                        <p class="text-gray-600 mb-4">Build cross-platform mobile apps using React Native. Learn to deploy to both iOS and Android with a single codebase.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-gray-600 text-sm">8 weeks</span>
                             </div>
-                            <div class="course-lectures flex items-center">
-                                <i class="far fa-play-circle mr-1"></i> 180 lectures
-                            </div>
-                            <div class="course-students flex items-center">
-                                <i class="fas fa-user-graduate mr-1"></i> 5.8k students
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-gray-600 text-sm">Certificate</span>
                             </div>
                         </div>
-                        <div class="course-progress mb-4">
-                            <div class="course-progress-bar" style="width: 40%"></div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-violet-700">$449</span>
+                            <button class="px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 transition-colors">Enroll Now</button>
                         </div>
-                        <a href="#" class="btn-primary text-white py-2 px-4 rounded-md w-full block text-center font-medium">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="px-6 py-3 bg-violet-600 text-white rounded-md hover:bg-violet-700 transition-colors">View All Courses</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Path Section -->
+    <section id="roadmap" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Your <span class="text-violet-700">Learning Path</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Follow our structured learning paths to go from beginner to professional developer with clear milestones along the way.</p>
+            </div>
+            
+            <div class="ninja-path max-w-4xl mx-auto">
+                <!-- Step 1 -->
+                <div class="flex flex-col md:flex-row items-center mb-16">
+                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8 path-point">
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                            <div class="w-12 h-12 bg-violet-100 rounded-full flex items-center justify-center mb-4">
+                                <span class="text-violet-700 font-bold text-xl">1</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Foundations</h3>
+                            <p class="text-gray-600 mb-4">Master the core concepts of programming with HTML, CSS, and JavaScript. Build your first interactive websites and understand how the web works.</p>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-gray-700">Progress</span>
+                                    <span class="text-sm font-medium text-violet-700">75%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-violet-600" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <button class="px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 transition-colors">Start Learning</button>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-8">
+                        <div class="terminal">
+                            <div class="terminal-header">
+                                <div class="terminal-button terminal-red"></div>
+                                <div class="terminal-button terminal-yellow"></div>
+                                <div class="terminal-button terminal-green"></div>
+                            </div>
+                            <div class="code-font text-emerald-400 text-sm">
+                                <div class="mb-1">
+                                    <span class="text-blue-400">const</span> <span class="text-green-300">greeting</span> = <span class="text-orange-300">'Hello World!'</span>;
+                                </div>
+                                <div class="mb-1">
+                                    <span class="text-blue-400">const</span> <span class="text-green-300">container</span> = <span class="text-yellow-300">document</span>.<span class="text-yellow-300">querySelector</span>(<span class="text-orange-300">'.container'</span>);
+                                </div>
+                                <div class="mb-1">
+                                    <span class="text-blue-400">const</span> <span class="text-green-300">element</span> = <span class="text-yellow-300">document</span>.<span class="text-yellow-300">createElement</span>(<span class="text-orange-300">'h1'</span>);
+                                </div>
+                                <div class="mb-1">
+                                    <span class="text-green-300">element</span>.<span class="text-green-300">textContent</span> = <span class="text-green-300">greeting</span>;
+                                </div>
+                                <div class="mb-1">
+                                    <span class="text-green-300">container</span>.<span class="text-yellow-300">appendChild</span>(<span class="text-green-300">element</span>);
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Course 4 -->
-                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="relative">
-                        <img src="https://via.placeholder.com/600x400/EF4444/FFFFFF?text=React+Native" alt="React Native" class="w-full h-48 object-cover">
-                        <div class="bestseller-tag">Bestseller</div>
-                        <div class="course-level">Intermediate</div>
-                        <div class="instructor-badge flex items-center">
-                            <i class="fas fa-user-tie mr-2"></i> Emily Davis
+                <!-- Step 2 -->
+                <div class="flex flex-col md:flex-row items-center mb-16">
+                    <div class="md:w-1/2 mb-8 md:mb-0 order-2 md:pl-8 path-point">
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                            <div class="w-12 h-12 bg-violet-100 rounded-full flex items-center justify-center mb-4">
+                                <span class="text-violet-700 font-bold text-xl">2</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Frontend Development</h3>
+                            <p class="text-gray-600 mb-4">Learn modern frontend frameworks like React, build responsive UIs, and master state management for complex applications.</p>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-gray-700">Progress</span>
+                                    <span class="text-sm font-medium text-violet-700">45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-violet-600" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <button class="px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 transition-colors">Continue Learning</button>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <div class="rating-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span class="text-gray-600 ml-1">4.7 (1.2k)</span>
+                    <div class="md:w-1/2 order-1 md:pr-8">
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <div class="editor-tabs">
+                                    <div class="editor-tab active">App.jsx</div>
+                                    <div class="editor-tab">styles.css</div>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+                                    </svg>
+                                </div>
                             </div>
-                            <div class="text-orange-500 font-bold">$54.99</div>
-                        </div>
-                        <h3 class="font-bold text-xl mb-2 text-gray-800">React Native: Mobile App Development</h3>
-                        <p class="text-gray-600 text-sm mb-4">Build native mobile apps for Android and iOS using React Native. Learn once, write anywhere.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">React</span>
-                            <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
-                            <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Mobile</span>
-                        </div>
-                        <div class="flex justify-between text-sm mb-4">
-                            <div class="course-duration flex items-center">
-                                <i class="far fa-clock mr-1"></i> 32 hours
+                            <div class="editor-content">
+                                <div class="code-line">
+                                    <span class="line-numbers">1</span>
+                                    <div class="code-text">
+                                        <span class="keyword">import</span> React, { useState } <span class="keyword">from</span> <span class="string">'react'</span>;
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">2</span>
+                                    <div class="code-text">
+                                        <span class="keyword">import</span> <span class="string">'./styles.css'</span>;
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">3</span>
+                                    <div class="code-text"></div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">4</span>
+                                    <div class="code-text">
+                                        <span class="keyword">function</span> <span class="function">App</span>() {
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">5</span>
+                                    <div class="code-text">
+                                        &nbsp;&nbsp;<span class="keyword">const</span> [<span class="variable">count</span>, <span class="function">setCount</span>] = <span class="function">useState</span>(0);
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">6</span>
+                                    <div class="code-text"></div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">7</span>
+                                    <div class="code-text">
+                                        &nbsp;&nbsp;<span class="keyword">return</span> (
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">8</span>
+                                    <div class="code-text">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="operator">&lt;</span><span class="keyword">div</span> <span class="variable">className</span>=<span class="string">"app"</span><span class="operator">&gt;</span>
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">9</span>
+                                    <div class="code-text">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="operator">&lt;</span><span class="keyword">h1</span><span class="operator">&gt;</span>React Counter<span class="operator">&lt;/</span><span class="keyword">h1</span><span class="operator">&gt;</span>
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">10</span>
+                                    <div class="code-text">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="operator">&lt;</span><span class="keyword">p</span><span class="operator">&gt;</span>Count: {<span class="variable">count</span>}<span class="operator">&lt;/</span><span class="keyword">p</span><span class="operator">&gt;</span>
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">11</span>
+                                    <div class="code-text">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="operator">&lt;</span><span class="keyword">button</span> <span class="variable">onClick</span>={() <span class="operator">=&gt;</span> <span class="function">setCount</span>(<span class="variable">count</span> <span class="operator">+</span> <span class="number">1</span>)}<span class="operator">&gt;</span>
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">12</span>
+                                    <div class="code-text">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Increment
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">13</span>
+                                    <div class="code-text">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="operator">&lt;/</span><span class="keyword">button</span><span class="operator">&gt;</span>
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">14</span>
+                                    <div class="code-text">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="operator">&lt;/</span><span class="keyword">div</span><span class="operator">&gt;</span>
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">15</span>
+                                    <div class="code-text">
+                                        &nbsp;&nbsp;);
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">16</span>
+                                    <div class="code-text">
+                                        }
+                                    </div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">17</span>
+                                    <div class="code-text"></div>
+                                </div>
+                                <div class="code-line">
+                                    <span class="line-numbers">18</span>
+                                    <div class="code-text">
+                                        <span class="keyword">export</span> <span class="keyword">default</span> App;
+                                    </div>
+                                </div>
                             </div>
-                            <div class="course-lectures flex items-center">
-                                <i class="far fa-play-circle mr-1"></i> 110 lectures
-                            </div>
-                            <div class="course-students flex items-center">
-                                <i class="fas fa-user-graduate mr-1"></i> 7.5k students
-                            </div>
                         </div>
-                        <div class="course-progress mb-4">
-                            <div class="course-progress-bar" style="width: 85%"></div>
-                        </div>
-                        <a href="#" class="btn-primary text-white py-2 px-4 rounded-md w-full block text-center font-medium">Enroll Now</a>
                     </div>
                 </div>
                 
-                <!-- Course 5 -->
-                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="relative">
-                        <img src="https://via.placeholder.com/600x400/8B5CF6/FFFFFF?text=AWS+Cloud" alt="AWS Cloud" class="w-full h-48 object-cover">
-                        <div class="trending-tag">Trending</div>
-                        <div class="course-level">Advanced</div>
-                        <div class="instructor-badge flex items-center">
-                            <i class="fas fa-user-tie mr-2"></i> Robert Wilson
+                <!-- Step 3 -->
+                <div class="flex flex-col md:flex-row items-center mb-16">
+                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8 path-point">
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                            <div class="w-12 h-12 bg-violet-100 rounded-full flex items-center justify-center mb-4">
+                                <span class="text-violet-700 font-bold text-xl">3</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Backend Development</h3>
+                            <p class="text-gray-600 mb-4">Build robust server-side applications with Node.js, Express, and MongoDB. Learn API design, authentication, and database management.</p>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-gray-700">Progress</span>
+                                    <span class="text-sm font-medium text-violet-700">10%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-violet-600" style="width: 10%"></div>
+                                </div>
+                            </div>
+                            <button class="px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 transition-colors">Start Learning</button>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <div class="rating-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="text-gray-600 ml-1">4.9 (850)</span>
+                    <div class="md:w-1/2 md:pl-8">
+                        <div class="terminal">
+                            <div class="terminal-header">
+                                <div class="terminal-button terminal-red"></div>
+                                <div class="terminal-button terminal-yellow"></div>
+                                <div class="terminal-button terminal-green"></div>
                             </div>
-                            <div class="text-orange-500 font-bold">$64.99</div>
-                        </div>
-                        <h3 class="font-bold text-xl mb-2 text-gray-800">AWS Certified Solutions Architect</h3>
-                        <p class="text-gray-600 text-sm mb-4">Prepare for the AWS Solutions Architect Associate certification with hands-on practice.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">AWS</span>
-                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Cloud</span>
-                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">DevOps</span>
-                        </div>
-                        <div class="flex justify-between text-sm mb-4">
-                            <div class="course-duration flex items-center">
-                                <i class="far fa-clock mr-1"></i> 36 hours
+                            <div class="code-font text-emerald-400 text-sm">
+                                <div class="mb-1">
+                                    <span class="text-blue-400">const</span> <span class="text-green-300">express</span> = <span class="text-yellow-300">require</span>(<span class="text-orange-300">'express'</span>);
+                                </div>
+                                <div class="mb-1">
+                                    <span class="text-blue-400">const</span> <span class="text-green-300">app</span> = <span class="text-green-300">express</span>();
+                                </div>
+                                <div class="mb-1">
+                                    <span class="text-blue-400">const</span> <span class="text-green-300">PORT</span> = <span class="text-yellow-300">process</span>.<span class="text-green-300">env</span>.<span class="text-green-300">PORT</span> || <span class="text-orange-300">3000</span>;
+                                </div>
+                                <div class="mb-1">
+                                    <span class="text-green-300">app</span>.<span class="text-yellow-300">get</span>(<span class="text-orange-300">'/'</span>, (<span class="text-green-300">req</span>, <span class="text-green-300">res</span>) => {
+                                </div>
+                                <div class="mb-1 ml-4">
+                                    <span class="text-green-300">res</span>.<span class="text-yellow-300">json</span>({ <span class="text-green-300">message</span>: <span class="text-orange-300">'API running!'</span> });
+                                </div>
+                                <div class="mb-1">
+                                    });
+                                </div>
+                                <div class="mb-1">
+                                    <span class="text-green-300">app</span>.<span class="text-yellow-300">listen</span>(<span class="text-green-300">PORT</span>, () => {
+                                </div>
+                                <div class="mb-1 ml-4">
+                                    <span class="text-yellow-300">console</span>.<span class="text-yellow-300">log</span>(<span class="text-orange-300">`Server running on port ${</span><span class="text-green-300">PORT</span><span class="text-orange-300">}`</span>);
+                                </div>
+                                <div class="mb-1">
+                                    });
+                                </div>
                             </div>
-                            <div class="course-lectures flex items-center">
-                                <i class="far fa-play-circle mr-1"></i> 130 lectures
-                            </div>
-                            <div class="course-students flex items-center">
-                                <i class="fas fa-user-graduate mr-1"></i> 4.2k students
-                            </div>
                         </div>
-                        <div class="course-progress mb-4">
-                            <div class="course-progress-bar" style="width: 65%"></div>
-                        </div>
-                        <a href="#" class="btn-primary text-white py-2 px-4 rounded-md w-full block text-center font-medium">Enroll Now</a>
                     </div>
                 </div>
                 
-                <!-- Course 6 -->
-                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="relative">
-                        <img src="https://via.placeholder.com/600x400/EC4899/FFFFFF?text=UI+UX+Design" alt="UI UX Design" class="w-full h-48 object-cover">
-                        <div class="new-tag">New</div>
-                        <div class="course-level">Beginner</div>
-                        <div class="instructor-badge flex items-center">
-                            <i class="fas fa-user-tie mr-2"></i> Jessica Lee
+                <!-- Step 4 -->
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-8 md:mb-0 order-2 md:pl-8 path-point">
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                            <div class="w-12 h-12 bg-violet-100 rounded-full flex items-center justify-center mb-4">
+                                <span class="text-violet-700 font-bold text-xl">4</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Full-Stack Mastery</h3>
+                            <p class="text-gray-600 mb-4">Combine frontend and backend skills to build complete applications. Learn deployment, testing, and optimization techniques.</p>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-gray-700">Progress</span>
+                                    <span class="text-sm font-medium text-violet-700">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-violet-600" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <button class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md cursor-not-allowed">Locked</button>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <div class="rating-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span class="text-gray-600 ml-1">4.2 (620)</span>
-                            </div<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'967c5b5cd5aa741b',t:'MTc1Mzk1NzE2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+                    <div class="md:w-1/2 order-1 md:pr-8">
+                        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                            <svg class="w-24 h-24 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            </svg>
+                            <h3 class="text-xl font-bold mb-2">Content Locked</h3>
+                            <p class="text-gray-600 mb-4">Complete the previous modules to unlock this advanced content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Master In-Demand <span class="text-violet-700">Skills</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our curriculum is designed to help you master the most sought-after skills in the tech industry today.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Skill 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center card-hover">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">JavaScript</h3>
+                    <div class="mb-3">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-xs font-medium text-gray-700">Proficiency</span>
+                            <span class="text-xs font-medium text-yellow-600">Advanced</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill bg-yellow-500" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">Master modern JavaScript including ES6+ features, async programming, and functional concepts.</p>
+                </div>
+                
+                <!-- Skill 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center card-hover">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">React</h3>
+                    <div class="mb-3">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-xs font-medium text-gray-700">Proficiency</span>
+                            <span class="text-xs font-medium text-blue-600">Intermediate</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill bg-blue-500" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">Build dynamic user interfaces with React, including hooks, context API, and state management.</p>
+                </div>
+                
+                <!-- Skill 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center card-hover">
+                    <div class="w-16 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'967ef64142c2c6aa',t:'MTc1Mzk4NDQ3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
